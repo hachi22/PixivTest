@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import cat.itb.pixiv.Fragments.HomeFragments.FragmentHome;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -13,5 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("hola");
         System.out.println("top bar");
+
+        FragmentHome fragemnt = new FragmentHome();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragemnt).commit();
+
     }
 }
