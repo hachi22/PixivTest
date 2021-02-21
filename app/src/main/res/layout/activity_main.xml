@@ -10,6 +10,13 @@
 
 
 
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigator_view"
         app:headerLayout="@layout/header_navigation_drawer"
