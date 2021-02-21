@@ -54,6 +54,7 @@
     </group>
 
     <item android:title="Connection">
+        <menu>
 
     <group
         android:id="@+id/group3navDrawer"
@@ -74,10 +75,12 @@
             />
 
     </group>
+        </menu>
 
     </item>
 
     <item android:title="Others">
+        <menu>
 
     <group
         android:id="@+id/group4navDrawer"
@@ -106,6 +109,7 @@
             />
 
     </group>
+        </menu>
 
     </item>
 

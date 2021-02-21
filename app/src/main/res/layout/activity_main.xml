@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <ImageView
-        android:layout_width="100dip"
-        android:layout_height="100dip"
-        android:src="@drawable/perro"
-        android:layout_centerInParent="true"/>
-    <ImageButton
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigator_view"
+        app:headerLayout="@layout/header_navigation_drawer"
+        app:menu="@menu/navigation_drawer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_baseline_thumb_up_alt_24"
-        android:layout_centerInParent="true"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        />
 
 
 
-
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
