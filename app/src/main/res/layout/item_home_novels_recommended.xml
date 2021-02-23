@@ -37,11 +37,21 @@
         />
 
     <TextView
+        android:id="@+id/text_view_novels_recommended_user"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_view_novels_recommended_like"
+        android:layout_toRightOf="@+id/image_view_novels_recommended"
+        android:layout_marginLeft="30dp"
+        android:hint="user"
+        />
+
+    <TextView
         android:id="@+id/text_view_novels_recommended_description"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/image_view_novels_recommended"
-        android:layout_marginTop="50dp"
+        android:layout_below="@+id/text_view_novels_recommended_user"
         android:layout_marginLeft="30dp"
         android:hint="descripció"
         android:textSize="15sp"
