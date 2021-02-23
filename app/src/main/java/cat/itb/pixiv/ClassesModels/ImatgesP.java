@@ -1,16 +1,23 @@
 package cat.itb.pixiv.ClassesModels;
 
-import android.media.Image;
-
 public class ImatgesP {
     private String title;
+    private String description;
     private String user;
-    private String image;
+    private int imageUser;
+    private int image;
+    private int numLikes;
+    private int numViews;
 
-    public ImatgesP(String title, String user, String image) {
+
+    public ImatgesP(String title, String description, String user, int image, int numLikes, int numViews, int imageUser) {
         this.title = title;
+        this.description = description;
         this.user = user;
         this.image = image;
+        this.numLikes = numLikes;
+        this.numViews = numViews;
+        this.imageUser = imageUser;
     }
 
     public String getTitle() {
@@ -21,6 +28,14 @@ public class ImatgesP {
         this.title = title;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getUser() {
         return user;
     }
@@ -29,11 +44,35 @@ public class ImatgesP {
         this.user = user;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
+    }
+
+    public int getNumLikes() {
+        return numLikes;
+    }
+
+    public void setNumLikes(int numLikes) {
+        this.numLikes = numLikes;
+    }
+
+    public int getNumViews() {
+        return numViews;
+    }
+
+    public void setNumViews(int numViews) {
+        this.numViews = numViews;
+    }
+
+    public int getImageUser() {
+        return imageUser;
+    }
+
+    public void setImageUser(int imageUser) {
+        this.imageUser = imageUser;
     }
 }
