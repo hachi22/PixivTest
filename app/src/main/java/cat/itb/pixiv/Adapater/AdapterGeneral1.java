@@ -55,9 +55,10 @@ public class AdapterGeneral1 extends FirebaseRecyclerAdapter<ImatgesP, AdapterGe
     public AdapterGeneral1.GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if(modelID == 1){
             return new GeneralViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_illustrations_ranking,parent,false));
-        }if(modelID == 2){
-            return new GeneralViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.ite,parent,false));
         }
+//        if(modelID == 2){
+//            return new GeneralViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false));
+//        }
         return null;
     }
 
