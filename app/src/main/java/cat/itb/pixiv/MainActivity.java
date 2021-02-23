@@ -1,18 +1,28 @@
 package cat.itb.pixiv;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
-import android.annotation.SuppressLint;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 
 import com.google.android.material.button.MaterialButton;
 
+import cat.itb.pixiv.Adapater.SlideViewAdapter;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHome;
+import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
+import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
+import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
 
 public class MainActivity extends AppCompatActivity {
-    MaterialButton button_illustrations,button_manga, button_novels;
+    public static Fragment currentFragment;
+    public static MaterialButton button_illustrations,button_manga, button_novels;
 
 
     @Override
@@ -26,51 +36,55 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("hola");
         System.out.println("top bar");
 
-        FragmentHome fragemnt = new FragmentHome();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragemnt).commit();
 
-//        button_illustrations.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("ResourceAsColor")
-//            @Override
-//            public void onClick(View v) {
-//                button_illustrations.setTextColor(R.color.colorAccent);
-//                button_manga.setTextColor(R.color.gray);
-//                button_novels.setTextColor(R.color.gray);
-//                button_illustrations.setBackgroundColor(R.color.colorPrimary);
-//                button_novels.setBackgroundColor(R.color.colorAccent);
-//                button_manga.setBackgroundColor(R.color.colorAccent);
-//
-//
-//            }
-//        });
-//
-//        button_manga.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("ResourceAsColor")
-//            @Override
-//            public void onClick(View v) {
-//                button_illustrations.setTextColor(R.color.gray);
-//                button_manga.setTextColor(R.color.colorAccent);
-//                button_novels.setTextColor(R.color.gray);
-//                button_illustrations.setBackgroundColor(R.color.colorAccent);
-//                button_novels.setBackgroundColor(R.color.colorAccent);
-//                button_manga.setBackgroundColor(R.color.colorPrimary);
-//
-//            }
-//        });
-//
-//        button_novels.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("ResourceAsColor")
-//            @Override
-//            public void onClick(View v) {
-//                button_manga.setTextColor(R.color.gray);
-//                button_illustrations.setTextColor(R.color.gray);
-//                button_novels.setTextColor(R.color.colorAccent);
-//                button_illustrations.setBackgroundColor(R.color.colorAccent);
-//                button_manga.setBackgroundColor(R.color.colorAccent);
-//                button_novels.setBackgroundColor(R.color.colorPrimary);
-//
-//            }
-//        });
+
+
+        FragmentHome fragemnt = new FragmentHome();
+        currentFragment=new FragmentHomeIllustrations();
+        changeFragment(currentFragment);
+
+
+        button_illustrations.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+
+                currentFragment=new FragmentHomeIllustrations();
+                changeFragment(currentFragment);
+
+            }
+        });
+
+        button_manga.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+
+                currentFragment=new FragmentHomeManga();
+                changeFragment(currentFragment);
+
+            }
+        });
+
+        button_novels.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+
+                currentFragment=new FragmentHomeNovels();
+                changeFragment(currentFragment);
+
+            }
+        });
+
 
     }
+
+    private void changeFragment(Fragment currentFragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,currentFragment).commit();
+    }
+
+
+
+
 }
