@@ -58,7 +58,7 @@ public class FragmentHomeManga extends Fragment {
         adapterPixivVision.setContext(getContext());
         recyclerView.setAdapter(adapterPixivVision);
 
-        recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_recommended);
+        recyclerView = rootView.findViewById(R.id.recycler_view_manga_mangas);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         FirebaseRecyclerOptions<ImatgesP> options3 = new FirebaseRecyclerOptions.Builder<ImatgesP>()
                 .setQuery(FireBaseHelper.getReferenceRecommendedManga(), ImatgesP.class).build();

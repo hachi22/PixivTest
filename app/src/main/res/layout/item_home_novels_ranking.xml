@@ -15,7 +15,7 @@
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@color/grey"/>
+  />
 
     <ImageView
         android:id="@+id/heart_novel_ranking"
@@ -37,7 +37,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/white"
+
         />
 
     <TextView
@@ -50,7 +50,7 @@
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:textSize="15sp"
-        android:textColor="@color/white"
+
         />
 
     <TextView
@@ -60,7 +60,7 @@
         android:layout_marginLeft="30dp"
         android:hint="user"
         android:layout_marginTop="206dp"
-        android:textColor="@color/white"
+
         />
 
 
