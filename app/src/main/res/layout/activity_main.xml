@@ -27,6 +27,12 @@
         android:layout_gravity="start"
         />
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/slide_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
     <include
         layout="@layout/top_app_bar"/>
 

@@ -14,6 +14,10 @@ import cat.itb.pixiv.R;
 
 public class FragmentHomeNovels extends Fragment {
 
+    public static FragmentHomeNovels getInstance(){
+        return new FragmentHomeNovels();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,17 +27,17 @@ public class FragmentHomeNovels extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        MainActivity.button_novels.setTextColor(getActivity().getResources().getColor(R.color.colorAccent));
-        MainActivity.button_novels.setBackgroundTintList(ContextCompat.getColorStateList(getActivity(),R.color.colorPrimary));
-        return inflater.inflate(R.layout.fragment_home_novels, container, false);
+//        MainActivity.button_novels.setTextColor(getActivity().getResources().getColor(R.color.colorAccent));
+//        MainActivity.button_novels.setBackgroundTintList(ContextCompat.getColorStateList(getActivity(),R.color.colorPrimary));
+     return inflater.inflate(R.layout.fragment_home_novels, container, false);
     }
 
     @Override
     public void onStop() {
 
-        MainActivity.button_novels.setTextColor(getActivity().getResources().getColor(R.color.gray));
-        MainActivity.button_novels.setBackgroundTintList(ContextCompat.getColorStateList(getActivity(),R.color.colorAccent));
-        super.onStop();
+//        MainActivity.button_novels.setTextColor(getActivity().getResources().getColor(R.color.gray));
+//        MainActivity.button_novels.setBackgroundTintList(ContextCompat.getColorStateList(getActivity(),R.color.colorAccent));
+       super.onStop();
     }
 
 }
