@@ -1,14 +1,10 @@
 package cat.itb.pixiv.Adapater;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,16 +14,12 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
-public class AdapterGeneral1 extends FirebaseRecyclerAdapter<ImatgesP, AdapterGeneral1.GeneralViewHolder> {
+public class AdapterRankingIM extends FirebaseRecyclerAdapter<ImatgesP, AdapterRankingIM.GeneralViewHolder> {
 
-    private int modelID;
     private ImatgesP model;
-
     private Context context;
 
     public Context getContext() {
@@ -37,10 +29,8 @@ public class AdapterGeneral1 extends FirebaseRecyclerAdapter<ImatgesP, AdapterGe
         this.context = context;
     }
 
-    public AdapterGeneral1(@NonNull FirebaseRecyclerOptions<ImatgesP> options, int modelID, ImatgesP model) {
+    public AdapterRankingIM(@NonNull FirebaseRecyclerOptions<ImatgesP> options) {
         super(options);
-        this.modelID = modelID;
-        this.model = model;
     }
 
     @Override
@@ -52,14 +42,9 @@ public class AdapterGeneral1 extends FirebaseRecyclerAdapter<ImatgesP, AdapterGe
 
     @NonNull
     @Override
-    public AdapterGeneral1.GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(modelID == 1){
-            return new GeneralViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_illustrations_ranking,parent,false));
-        }
-//        if(modelID == 2){
-//            return new GeneralViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false));
-//        }
-        return null;
+    public AdapterRankingIM.GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new GeneralViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_illustrations_ranking,parent,false));
+
     }
 
     class GeneralViewHolder extends RecyclerView.ViewHolder{
@@ -78,18 +63,18 @@ public class AdapterGeneral1 extends FirebaseRecyclerAdapter<ImatgesP, AdapterGe
         }
 
         public void bind(){
-            if(modelID == 1){
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(120, 120);
-                imageViewImage.setLayoutParams(params);
-                textViewTitle.setText(model.getTitle());
-                textViewUser.setText(model.getUser());
-            }
+            textViewTitle.setText(model.getTitle());
+            textViewUser.setText(model.getUser());
 
+            final boolean[] heart = {false};
             Picasso.with(getContext()).load(model.getImage()).into(imageViewImage);
             imageLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    if(heart[0]){
+                        imageLike.setImageResource(R.drawable.likeheartwhite);
+                    }else imageLike.setImageResource(R.drawable.likeheartred);
+                    heart[0] = !heart[0];
                 }
             });
         }

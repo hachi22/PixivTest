@@ -21,6 +21,7 @@
         />
 
     <TextView
+        android:id="@+id/text_view_manga_pixivvidion"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/image_view_manga_pixivision"
