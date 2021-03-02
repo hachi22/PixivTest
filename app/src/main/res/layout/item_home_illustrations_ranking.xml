@@ -16,6 +16,7 @@
         android:layout_height="250dp"
         android:src="@drawable/gardient_ranking"
         />
+
     <TextView
         android:id="@+id/text_view_illustrations_ranking_name"
         android:layout_marginLeft="10dp"
@@ -51,6 +52,7 @@
         android:clickable="true"
         android:focusable="true" />
 
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:src="@drawable/perro"
@@ -58,5 +60,6 @@
         android:layout_marginLeft="10dp"
         android:layout_height="30dp"
         android:layout_width="30dp" />
+
 
 </RelativeLayout>
