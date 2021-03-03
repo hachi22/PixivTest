@@ -2,7 +2,7 @@ package cat.itb.pixiv.Fragments.HomeFragments;
 
 import android.os.Bundle;
 
-import androidx.core.content.ContextCompat;
+
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -26,18 +26,7 @@ public class FragmentHomeNovels extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-//        MainActivity.button_novels.setTextColor(getActivity().getResources().getColor(R.color.colorAccent));
-//        MainActivity.button_novels.setBackgroundTintList(ContextCompat.getColorStateList(getActivity(),R.color.colorPrimary));
      return inflater.inflate(R.layout.fragment_home_novels, container, false);
-    }
-
-    @Override
-    public void onStop() {
-
-//        MainActivity.button_novels.setTextColor(getActivity().getResources().getColor(R.color.gray));
-//        MainActivity.button_novels.setBackgroundTintList(ContextCompat.getColorStateList(getActivity(),R.color.colorAccent));
-       super.onStop();
     }
 
 }

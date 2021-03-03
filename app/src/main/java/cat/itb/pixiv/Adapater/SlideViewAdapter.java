@@ -5,23 +5,16 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
-import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
-import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
 
 public class SlideViewAdapter extends FragmentStatePagerAdapter {
 
-    private List<Fragment>fragmentList=new ArrayList<>();
-    private List<String>stringList=new ArrayList<>();
+    private final List<Fragment>fragmentList=new ArrayList<>();
+    private final List<String>stringList=new ArrayList<>();
     public SlideViewAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
