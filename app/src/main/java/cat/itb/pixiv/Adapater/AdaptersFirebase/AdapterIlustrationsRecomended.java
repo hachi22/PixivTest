@@ -1,4 +1,4 @@
-package cat.itb.pixiv.Adapater;
+package cat.itb.pixiv.Adapater.AdaptersFirebase;
 
 import android.content.Context;
 import android.view.LayoutInflater;

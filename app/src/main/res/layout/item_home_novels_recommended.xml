@@ -5,6 +5,11 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@color/grey"/>
+
+    <ImageView
         android:id="@+id/image_view_novels_recommended"
         android:layout_width="60dp"
         android:layout_height="80dp"

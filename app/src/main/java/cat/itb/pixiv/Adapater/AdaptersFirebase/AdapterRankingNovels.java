@@ -1,4 +1,4 @@
-package cat.itb.pixiv.Adapater;
+package cat.itb.pixiv.Adapater.AdaptersFirebase;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
-public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<ImatgesP, AdapterNovelsRecommended.ViewHolderNovelsRecommended> {
+public class AdapterRankingNovels extends FirebaseRecyclerAdapter<ImatgesP, AdapterRankingNovels.ViewHolderRankingNovels> {
 
     private ImatgesP model;
     private Context context;
@@ -29,35 +29,34 @@ public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<ImatgesP, 
         this.context = context;
     }
 
-    public AdapterNovelsRecommended(@NonNull FirebaseRecyclerOptions<ImatgesP> options) {
+    public AdapterRankingNovels(@NonNull FirebaseRecyclerOptions<ImatgesP> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AdapterNovelsRecommended.ViewHolderNovelsRecommended holder, int position, @NonNull ImatgesP model) {
+    protected void onBindViewHolder(@NonNull AdapterRankingNovels.ViewHolderRankingNovels holder, int position, @NonNull ImatgesP model) {
         this.model = model;
         holder.bind();
     }
 
     @NonNull
     @Override
-    public AdapterNovelsRecommended.ViewHolderNovelsRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new AdapterNovelsRecommended.ViewHolderNovelsRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_novels_recommended,parent,false));
+    public AdapterRankingNovels.ViewHolderRankingNovels onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new AdapterRankingNovels.ViewHolderRankingNovels(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_novels_ranking,parent,false));
     }
 
-    class ViewHolderNovelsRecommended extends RecyclerView.ViewHolder {
+    class ViewHolderRankingNovels extends RecyclerView.ViewHolder {
 
         ImageView imageViewimage, imageViewlike;
-        TextView textViewTitle, textViewDescription, textViewNumlikes;
+        TextView textViewTitle, textViewDescription, textViewUser;
 
-        public ViewHolderNovelsRecommended(@NonNull View itemView) {
+        public ViewHolderRankingNovels(@NonNull View itemView) {
             super(itemView);
-
-            imageViewimage = itemView.findViewById(R.id.image_view_novels_recommended);
-            imageViewlike = itemView.findViewById(R.id.image_view_novels_recommended_like);
-            textViewTitle = itemView.findViewById(R.id.text_view_novels_recommended_title);
-            textViewDescription = itemView.findViewById(R.id.text_view_novels_recommended_description);
-            textViewNumlikes = itemView.findViewById(R.id.text_view_novels_recommended_numlikes);
+            imageViewimage = itemView.findViewById(R.id.image_view_novels_ranking);
+            imageViewlike = itemView.findViewById(R.id.heart_novel_ranking);
+            textViewTitle = itemView.findViewById(R.id.text_view_novels_rankings_title);
+            textViewDescription = itemView.findViewById(R.id.text_view_novels_rankings_description);
+            textViewUser = itemView.findViewById(R.id.text_view_novels_rankings_user);
 
         }
 
@@ -76,7 +75,9 @@ public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<ImatgesP, 
 
             textViewTitle.setText(model.getTitle());
             textViewDescription.setText(model.getDescription());
-            textViewNumlikes.setText(model.getNumLikes());
+            textViewUser.setText(model.getUser());
+
         }
     }
+
 }

@@ -13,8 +13,9 @@
         />
     <ImageView
         android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:src="@drawable/gardient_ranking"
+        android:layout_marginTop="50dp"
         />
 
     <TextView
@@ -47,7 +48,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:src="@drawable/likeheartwhite"
-        android:layout_marginTop="205dp"
+        android:layout_marginTop="200dp"
         android:layout_marginLeft="200dp"
         android:clickable="true"
         android:focusable="true" />
@@ -60,6 +61,13 @@
         android:layout_marginLeft="10dp"
         android:layout_height="30dp"
         android:layout_width="30dp" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/borde_item_view"
+        />
+
 
 
 </RelativeLayout>

@@ -4,20 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragments.FragmentHomeNovels"
-    android:layout_margin="10dp">
+   >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp">
 
             <ImageView
                 android:layout_width="25dp"
-                android:layout_height="25dp"/>
+                android:layout_height="25dp"
+                android:src="@drawable/corona"
+                android:layout_marginRight="5dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -34,17 +39,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:scrollbars="horizontal"
-
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             >
         </androidx.recyclerview.widget.RecyclerView>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp">
 
             <ImageView
                 android:layout_width="25dp"
-                android:layout_height="25dp"/>
+                android:layout_height="25dp"
+                android:src="@drawable/likeheartredallred"
+                android:layout_marginRight="5dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
