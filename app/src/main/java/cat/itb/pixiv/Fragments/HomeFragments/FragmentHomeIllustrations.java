@@ -2,6 +2,8 @@ package cat.itb.pixiv.Fragments.HomeFragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +27,11 @@ import cat.itb.pixiv.R;
 
 public class FragmentHomeIllustrations extends Fragment {
 
+
+public static FragmentHomeIllustrations getInstance(){
+    return new FragmentHomeIllustrations();
+}
+
     RecyclerView recyclerView;
     AdapterRankingIM adapterRanking;
     AdapterIlustrationsRecomended adapterRecomended;
@@ -38,6 +45,7 @@ public class FragmentHomeIllustrations extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_home_illustrations, container, false);
         View rootView = inflater.inflate(R.layout.fragment_home_illustrations, container, false);
         FireBaseHelper.obtenerReferencia();
 
@@ -70,4 +78,10 @@ public class FragmentHomeIllustrations extends Fragment {
 
         return rootView;
     }
-}
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+  }
+

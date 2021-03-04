@@ -24,6 +24,10 @@ import cat.itb.pixiv.R;
 
 public class FragmentHomeManga extends Fragment {
 
+    public static FragmentHomeManga getInstance(){
+        return new FragmentHomeManga();
+    }
+
     RecyclerView recyclerView;
     AdapterRankingIM adapterRanking;
     AdapterPixivVision adapterPixivVision;
@@ -39,6 +43,7 @@ public class FragmentHomeManga extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+     return inflater.inflate(R.layout.fragment_home_manga, container, false);
         View rootView = inflater.inflate(R.layout.fragment_home_manga, container, false);
 
 
@@ -68,4 +73,6 @@ public class FragmentHomeManga extends Fragment {
 
         return rootView;
     }
+
+
 }

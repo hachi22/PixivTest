@@ -19,14 +19,14 @@ public class FragmentHome extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView =inflater.inflate(R.layout.fragment_home, container, false);
-
-        ViewPager2 SlideViewAdapter = rootView.findViewById(R.id.slide_view_pager);
-        SlideViewAdapter.setAdapter(new SlideViewAdapter(getActivity()));
-
-        return rootView;
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        View rootView =inflater.inflate(R.layout.fragment_home, container, false);
+//
+//        ViewPager2 SlideViewAdapter = rootView.findViewById(R.id.slide_view_pager);
+//        SlideViewAdapter.setAdapter(new SlideViewAdapter(getActivity()));
+//
+//        return rootView;
+//    }
 }

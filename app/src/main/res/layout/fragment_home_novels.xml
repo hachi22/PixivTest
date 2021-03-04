@@ -6,6 +6,7 @@
     tools:context=".Fragments.HomeFragments.FragmentHomeNovels"
     android:layout_margin="10dp">
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

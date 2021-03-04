@@ -1,36 +1,43 @@
 package cat.itb.pixiv.Adapater;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
-import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
-import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
-import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
 
-public class SlideViewAdapter extends FragmentStateAdapter {
+public class SlideViewAdapter extends FragmentStatePagerAdapter {
 
-    public SlideViewAdapter(@NonNull FragmentActivity fragmentActivity) {
-        super(fragmentActivity);
+    private final List<Fragment>fragmentList=new ArrayList<>();
+    private final List<String>stringList=new ArrayList<>();
+    public SlideViewAdapter(@NonNull FragmentManager fm) {
+        super(fm);
     }
 
     @NonNull
     @Override
-    public Fragment createFragment(int position) {
-        switch (position){
-            case 0:
-                return new FragmentHomeIllustrations();
-            case 1:
-                return new FragmentHomeManga();
-            default:
-                return new FragmentHomeNovels();
-        }
+    public Fragment getItem(int position) {
+        return fragmentList.get(position);
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return stringList.get(position);
     }
 
     @Override
-    public int getItemCount() {
-        return 3;
+    public int getCount() {
+        return fragmentList.size();
     }
+    public void addFragment(Fragment fragment, String title){
+        fragmentList.add(fragment);
+        stringList.add(title);
 
+    }
 }

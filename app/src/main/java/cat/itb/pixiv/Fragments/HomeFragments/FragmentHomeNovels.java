@@ -2,6 +2,7 @@ package cat.itb.pixiv.Fragments.HomeFragments;
 
 import android.os.Bundle;
 
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.R;
 
 public class FragmentHomeNovels extends Fragment {
+
 
     RecyclerView recyclerView;
     AdapterNovelsRecommended adapterRecommended;
@@ -57,4 +59,5 @@ public class FragmentHomeNovels extends Fragment {
 
         return rootView;
     }
+
 }
