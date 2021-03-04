@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
         slideViewAdapter.addFragment(FragmentHomeNovels.getInstance(),"Novels");
         viewPager.setAdapter(slideViewAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        FragmentHome fragemnt = new FragmentHome();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragemnt).commit();
+
 
     }
 }

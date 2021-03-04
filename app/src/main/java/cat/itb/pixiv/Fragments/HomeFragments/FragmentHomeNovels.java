@@ -30,6 +30,9 @@ import cat.itb.pixiv.R;
 
 public class FragmentHomeNovels extends Fragment {
 
+    public static FragmentHomeNovels getInstance(){
+        return new FragmentHomeNovels();
+    }
 
     RecyclerView recyclerView;
     AdapterNovelsRecommended adapterRecommended;

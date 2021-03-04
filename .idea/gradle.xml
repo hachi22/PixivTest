@@ -10,8 +10,8 @@
         <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
-            <option value="/dades/dades/marcpellicena/Jvera" />
-            <option value="/dades/dades/marcpellicena/Jvera/app" />
+            <option value="$APPLICATION_HOME_DIR$/projects/Pixiv4" />
+            <option value="$APPLICATION_HOME_DIR$/projects/Pixiv4/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
