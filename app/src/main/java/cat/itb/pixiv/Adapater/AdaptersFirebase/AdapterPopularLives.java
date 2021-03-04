@@ -1,8 +1,7 @@
-package cat.itb.pixiv.Adapater;
+package cat.itb.pixiv.Adapater.AdaptersFirebase;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
-
-import java.net.PasswordAuthentication;
-import java.net.PortUnreachableException;
 
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
