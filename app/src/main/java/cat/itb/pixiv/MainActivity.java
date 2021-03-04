@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("hola");
-        System.out.println("top bar");
 
         viewPager = findViewById(R.id.slide_view_pager);
         tabLayout=findViewById(R.id.tablayout);
@@ -37,5 +35,8 @@ public class MainActivity extends AppCompatActivity {
         slideViewAdapter.addFragment(FragmentHomeNovels.getInstance(),"Novels");
         viewPager.setAdapter(slideViewAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        FragmentHome fragemnt = new FragmentHome();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragemnt).commit();
+
     }
 }
