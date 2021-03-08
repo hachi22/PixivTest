@@ -56,7 +56,7 @@ public class NAdapterNovelsRecommended extends RecyclerView.Adapter<NAdapterNove
         }
 
         public  void binData(ImatgesP imatgesP){
-            imageViewimage.setImageResource(R.drawable.ic_launcher_background);
+            imageViewimage.setImageResource(imatgesP.getImageRecomended());
             final boolean[] heart = {false};
             imageViewlike.setOnClickListener(new View.OnClickListener() {
                 @Override

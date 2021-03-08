@@ -56,11 +56,11 @@ public class FragmentHomeManga extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home_manga, container, false);
 
         List<ImatgesP> imageslist = new ArrayList<>();
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.manga1,2,2,2,R.raw.manga6,R.raw.manga11));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.manga2,2,2,2,R.raw.manga7,R.raw.manga12));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.manga3,2,2,2,R.raw.manga8,R.raw.manga13));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.manga4,2,2,2,R.raw.manga9,R.raw.manga14));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.manga5,2,2,2,R.raw.manga10,R.raw.manga15));
 
 //        recyclerView = rootView.findViewById(R.id.recycler_view_manga_ranking);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

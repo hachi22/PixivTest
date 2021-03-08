@@ -52,7 +52,7 @@ public class NAdapterPopularLives extends RecyclerView.Adapter<NAdapterPopularLi
         }
 
         public  void binData(ImatgesP imatgesP){
-            imageView.setImageResource(R.drawable.ic_launcher_background);
+            imageView.setImageResource(imatgesP.getImagemiddle());
             textViewTitle.setText(imatgesP.getUser());
             textViewViews.setText(String.valueOf(imatgesP.getNumViews()));
         }

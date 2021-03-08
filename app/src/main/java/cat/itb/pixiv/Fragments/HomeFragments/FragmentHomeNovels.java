@@ -52,12 +52,12 @@ public class FragmentHomeNovels extends Fragment {
         View rootView =  inflater.inflate(R.layout.fragment_home_novels, container, false);
 
         List<ImatgesP> imageslist = new ArrayList<>();
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.novel1,2,2,2,0,R.raw.novel7));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.novel2,2,2,2,0,R.raw.novel8));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.novel3,2,2,2,0,R.raw.novel9));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.novel4,2,2,2,0,R.raw.novel10));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.novel5,2,2,2,0,R.raw.novel11));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.novel6,2,2,2,0,R.raw.novel12));
 
 //        recyclerView = rootView.findViewById(R.id.recycler_view_novels_ranking);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

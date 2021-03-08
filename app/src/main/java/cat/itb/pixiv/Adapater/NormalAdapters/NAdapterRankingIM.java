@@ -67,7 +67,7 @@ public class NAdapterRankingIM extends RecyclerView.Adapter<NAdapterRankingIM.Ra
 
             textViewTitle.setText(imatgesP.getTitle());
             textViewUser.setText(imatgesP.getUser());
-            imageViewImage.setImageResource(R.drawable.ic_launcher_background);
+            imageViewImage.setImageResource(imatgesP.getImage());
         }
     }
 }

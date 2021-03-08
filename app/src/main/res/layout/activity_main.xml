@@ -8,10 +8,6 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-
-
-
-
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -31,8 +27,7 @@
         android:id="@+id/slide_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
-
+    
     <include
         layout="@layout/top_app_bar"/>
 

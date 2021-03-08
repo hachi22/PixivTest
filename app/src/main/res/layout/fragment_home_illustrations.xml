@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragments.FragmentHomeIllustrations"
     android:orientation="vertical"
+
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="120dp">
 
         <LinearLayout
             android:layout_width="wrap_content"

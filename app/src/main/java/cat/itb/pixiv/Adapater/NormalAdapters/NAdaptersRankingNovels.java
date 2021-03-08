@@ -55,7 +55,7 @@ public class NAdaptersRankingNovels extends RecyclerView.Adapter<NAdaptersRankin
         }
 
         public  void binData(ImatgesP imatgesP){
-            imageViewimage.setImageResource(R.drawable.ic_launcher_background);
+
             final boolean[] heart = {false};
             imageViewlike.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,7 +66,7 @@ public class NAdaptersRankingNovels extends RecyclerView.Adapter<NAdaptersRankin
                     heart[0] = !heart[0];
                 }
             });
-
+            imageViewimage.setImageResource(imatgesP.getImage());
             textViewTitle.setText(imatgesP.getTitle());
             textViewDescription.setText(imatgesP.getDescription());
             textViewUser.setText(imatgesP.getUser());

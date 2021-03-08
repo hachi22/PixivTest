@@ -53,7 +53,7 @@ public class NAdapterPixivVision extends RecyclerView.Adapter<NAdapterPixivVisio
 
         public  void binData(ImatgesP imatgesP){
             textViewTitle.setText(imatgesP.getTitle());
-            imageView.setImageResource(R.drawable.ic_launcher_background);
+            imageView.setImageResource(imatgesP.getImagemiddle());
         }
     }
 

@@ -40,17 +40,18 @@ public class NAdapterIllustrationsRecommended extends RecyclerView.Adapter<NAdap
 
 
     class NAViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageViewimage, imageViewLike;
+        ImageView imageViewimage, imageViewLike,proves;
 
         public NAViewHolder(@NonNull View itemView) {
             super(itemView);
+
             imageViewimage = itemView.findViewById(R.id.image_view_illustrations_recommended);
             imageViewLike = itemView.findViewById(R.id.image_view_illustrations_recommended_like);
         }
 
         public  void binData(ImatgesP imatgesP){
             final boolean[] heart = {false};
-            imageViewimage.setImageResource(R.drawable.ic_launcher_background);
+            imageViewimage.setImageResource(imatgesP.getImageRecomended());
             imageViewLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

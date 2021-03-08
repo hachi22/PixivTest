@@ -59,11 +59,11 @@ public static FragmentHomeIllustrations getInstance(){
         FireBaseHelper.obtenerReferencia();
 
         List<ImatgesP> imageslist = new ArrayList<>();
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
-        imageslist.add(new ImatgesP("title","description","user",1,2,2,2));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.img1,2,2,2,R.raw.img6,R.raw.img11));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.img2,2,2,2,R.raw.img7,R.raw.img12));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.img3,2,2,2,R.raw.img8,R.raw.img13));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.img4,2,2,2,R.raw.img9,R.raw.img14));
+        imageslist.add(new ImatgesP("title","description","user",R.raw.img5,2,2,2,R.raw.img10,R.raw.img15));
 
 
 
