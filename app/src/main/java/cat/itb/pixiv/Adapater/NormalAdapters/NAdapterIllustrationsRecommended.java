@@ -10,14 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import cat.itb.pixiv.ClassesModels.ImatgesIllustrationsRecommended;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
 public class NAdapterIllustrationsRecommended extends RecyclerView.Adapter<NAdapterIllustrationsRecommended.NAViewHolder>{
 
-    private List<ImatgesP> imagesList;
+    private List<ImatgesIllustrationsRecommended> imagesList;
 
-    public NAdapterIllustrationsRecommended(List<ImatgesP> imagesList) {
+    public NAdapterIllustrationsRecommended(List<ImatgesIllustrationsRecommended> imagesList) {
         this.imagesList = imagesList;
     }
 
@@ -49,9 +50,9 @@ public class NAdapterIllustrationsRecommended extends RecyclerView.Adapter<NAdap
             imageViewLike = itemView.findViewById(R.id.image_view_illustrations_recommended_like);
         }
 
-        public  void binData(ImatgesP imatgesP){
+        public  void binData(ImatgesIllustrationsRecommended imatgesP){
             final boolean[] heart = {false};
-            imageViewimage.setImageResource(imatgesP.getImageRecomended());
+            imageViewimage.setImageResource(imatgesP.getImage());
             imageViewLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

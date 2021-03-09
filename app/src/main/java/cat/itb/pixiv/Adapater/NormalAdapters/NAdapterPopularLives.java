@@ -12,13 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import cat.itb.pixiv.ClassesModels.ImatgesP;
+import cat.itb.pixiv.ClassesModels.ImatgesPopularLives;
 import cat.itb.pixiv.R;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NAdapterPopularLives extends RecyclerView.Adapter<NAdapterPopularLives.NAViewHolder>{
 
-    private List<ImatgesP> imagesList;
+    private List<ImatgesPopularLives> imagesList;
 
-    public NAdapterPopularLives(List<ImatgesP> imagesList) {
+    public NAdapterPopularLives(List<ImatgesPopularLives> imagesList) {
         this.imagesList = imagesList;
     }
 
@@ -43,16 +45,19 @@ public class NAdapterPopularLives extends RecyclerView.Adapter<NAdapterPopularLi
     class NAViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         TextView textViewTitle, textViewViews;
+        CircleImageView userImage;
 
         public NAViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view_illustrations_popular_lives);
             textViewTitle = itemView.findViewById(R.id.text_view_illustrations_name_popular_lives);
             textViewViews = itemView.findViewById(R.id.text_view_illustrations_views_popular_lives);
+            userImage=itemView.findViewById(R.id.popular_lives_user);
         }
 
-        public  void binData(ImatgesP imatgesP){
-            imageView.setImageResource(imatgesP.getImagemiddle());
+        public  void binData(ImatgesPopularLives imatgesP){
+            imageView.setImageResource(imatgesP.getImage());
+            userImage.setImageResource(imatgesP.getImageUser());
             textViewTitle.setText(imatgesP.getUser());
             textViewViews.setText(String.valueOf(imatgesP.getNumViews()));
         }

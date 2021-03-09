@@ -13,14 +13,15 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import cat.itb.pixiv.ClassesModels.ImatgesNovelsRecommended;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
 public class NAdapterNovelsRecommended extends RecyclerView.Adapter<NAdapterNovelsRecommended.NAViewHolder>{
 
-    private List<ImatgesP> imagesList;
+    private List<ImatgesNovelsRecommended> imagesList;
 
-    public NAdapterNovelsRecommended(List<ImatgesP> imagesList) {
+    public NAdapterNovelsRecommended(List<ImatgesNovelsRecommended> imagesList) {
         this.imagesList = imagesList;
     }
 
@@ -44,7 +45,7 @@ public class NAdapterNovelsRecommended extends RecyclerView.Adapter<NAdapterNove
 
     class NAViewHolder extends RecyclerView.ViewHolder{
         ImageView imageViewimage, imageViewlike;
-        TextView textViewTitle, textViewDescription, textViewNumlikes;
+        TextView textViewTitle, textViewDescription, textViewNumlikes,textViewUser;
 
         public NAViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,10 +54,11 @@ public class NAdapterNovelsRecommended extends RecyclerView.Adapter<NAdapterNove
             textViewTitle = itemView.findViewById(R.id.text_view_novels_recommended_title);
             textViewDescription = itemView.findViewById(R.id.text_view_novels_recommended_description);
             textViewNumlikes = itemView.findViewById(R.id.text_view_novels_recommended_numlikes);
+            textViewUser=itemView.findViewById(R.id.text_view_novels_recommended_user);
         }
 
-        public  void binData(ImatgesP imatgesP){
-            imageViewimage.setImageResource(imatgesP.getImageRecomended());
+        public  void binData(ImatgesNovelsRecommended imatgesP){
+
             final boolean[] heart = {false};
             imageViewlike.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -67,10 +69,11 @@ public class NAdapterNovelsRecommended extends RecyclerView.Adapter<NAdapterNove
                     heart[0] = !heart[0];
                 }
             });
-
+            imageViewimage.setImageResource(imatgesP.getImage());
             textViewTitle.setText(imatgesP.getTitle());
             textViewDescription.setText(imatgesP.getDescription());
-            textViewNumlikes.setText(String.valueOf(imatgesP.getNumLikes()));
+            textViewUser.setText(imatgesP.getUser());
+            textViewNumlikes.setText(String.valueOf(imatgesP.getNumlikes()));
         }
     }
 

@@ -13,14 +13,15 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import cat.itb.pixiv.ClassesModels.ImatgesMangaRecommended;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
 public class NAdaptersMangaRecommended extends RecyclerView.Adapter<NAdaptersMangaRecommended.NAViewHolder>{
 
-    private List<ImatgesP> imagesList;
+    private List<ImatgesMangaRecommended> imagesList;
 
-    public NAdaptersMangaRecommended(List<ImatgesP> imagesList) {
+    public NAdaptersMangaRecommended(List<ImatgesMangaRecommended> imagesList) {
         this.imagesList = imagesList;
     }
 
@@ -55,8 +56,7 @@ public class NAdaptersMangaRecommended extends RecyclerView.Adapter<NAdaptersMan
             textViewNumlikes = itemView.findViewById(R.id.text_view_manga_recommended_numlikes);
         }
 
-        public  void binData(ImatgesP imatgesP){
-            imageViewimage.setImageResource(imatgesP.getImageRecomended());
+        public  void binData(ImatgesMangaRecommended imatgesP){
             final boolean[] heart = {false};
             imageViewlike.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -67,6 +67,7 @@ public class NAdaptersMangaRecommended extends RecyclerView.Adapter<NAdaptersMan
                     heart[0] = !heart[0];
                 }
             });
+            imageViewimage.setImageResource(imatgesP.getImage());
             textViewTitle.setText(imatgesP.getTitle());
             textViewDescription.setText(imatgesP.getDescription());
             textViewNumlikes.setText(String.valueOf(imatgesP.getNumLikes()));

@@ -13,13 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import cat.itb.pixiv.ClassesModels.ImatgesP;
+import cat.itb.pixiv.ClassesModels.ImatgesPixivVision;
 import cat.itb.pixiv.R;
 
 public class NAdapterPixivVision extends RecyclerView.Adapter<NAdapterPixivVision.NAViewHolder>{
 
-    private List<ImatgesP> imagesList;
+    private List<ImatgesPixivVision> imagesList;
 
-    public NAdapterPixivVision(List<ImatgesP> imagesList) {
+    public NAdapterPixivVision(List<ImatgesPixivVision> imagesList) {
         this.imagesList = imagesList;
     }
 
@@ -51,9 +52,9 @@ public class NAdapterPixivVision extends RecyclerView.Adapter<NAdapterPixivVisio
             textViewTitle = itemView.findViewById(R.id.text_view_manga_pixivvidion);
         }
 
-        public  void binData(ImatgesP imatgesP){
+        public  void binData(ImatgesPixivVision imatgesP){
             textViewTitle.setText(imatgesP.getTitle());
-            imageView.setImageResource(imatgesP.getImagemiddle());
+            imageView.setImageResource(imatgesP.getImage());
         }
     }
 
