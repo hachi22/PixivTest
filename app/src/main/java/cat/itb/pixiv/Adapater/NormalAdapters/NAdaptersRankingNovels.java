@@ -1,5 +1,6 @@
 package cat.itb.pixiv.Adapater.NormalAdapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,18 +47,20 @@ public class NAdaptersRankingNovels extends RecyclerView.Adapter<NAdaptersRankin
 
     class NAViewHolder extends RecyclerView.ViewHolder{
         ImageView imageViewimage, imageViewlike;
-        TextView textViewTitle, textViewDescription, textViewUser;
+        TextView textViewTitle, textViewDescription, textViewUser,textViewCharacters;
         CircleImageView userImage;
         public NAViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewimage = itemView.findViewById(R.id.image_view_novels_ranking);
             imageViewlike = itemView.findViewById(R.id.heart_novel_ranking);
             textViewTitle = itemView.findViewById(R.id.text_view_novels_rankings_title);
+            textViewCharacters=itemView.findViewById(R.id.novel_characters);
             textViewDescription = itemView.findViewById(R.id.text_view_novels_rankings_description);
             userImage=itemView.findViewById(R.id.image_user_novels);
             textViewUser = itemView.findViewById(R.id.text_view_novels_rankings_user);
         }
 
+        @SuppressLint("SetTextI18n")
         public  void binData(ImatgesNovelRanking imatgesP){
 
             final boolean[] heart = {false};
@@ -72,6 +75,8 @@ public class NAdaptersRankingNovels extends RecyclerView.Adapter<NAdaptersRankin
             });
             imageViewimage.setImageResource(imatgesP.getImage());
             textViewTitle.setText(imatgesP.getTitle());
+
+            textViewCharacters.setText(imatgesP.getCharacters()+"characters");
             textViewDescription.setText(imatgesP.getDescription());
             userImage.setImageResource(imatgesP.getImageUser());
             textViewUser.setText(imatgesP.getUser());

@@ -30,11 +30,23 @@
         android:focusable="true" />
 
     <TextView
+        android:id="@+id/novel_characters"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="10dp"
+
+        />
+
+    <TextView
         android:id="@+id/text_view_novels_rankings_title"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         android:hint="title"
         android:gravity="center"
         android:textStyle="bold"
@@ -50,7 +62,7 @@
         android:layout_below="@id/text_view_novels_rankings_title"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textSize="15sp"
         android:textColor="@color/white"
         />
