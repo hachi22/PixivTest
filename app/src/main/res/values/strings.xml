@@ -8,4 +8,6 @@
     <string name="Illustrations">Illustrations</string>
     <string name="Manga">Manga</string>
     <string name="Novels">Novels</string>
+    <string name="openNavDrawer">Navigation Drawer open</string>
+    <string name="closeNavDrawer">Navigation Drawer close</string>
 </resources>

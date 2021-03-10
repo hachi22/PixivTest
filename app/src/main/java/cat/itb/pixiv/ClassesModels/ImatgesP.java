@@ -6,11 +6,13 @@ public class ImatgesP {
     private String user;
     private int imageUser;
     private int image;
+    private int imagemiddle;
+    private  int imageRecomended;
     private int numLikes;
     private int numViews;
 
 
-    public ImatgesP(String title, String description, String user, int image, int numLikes, int numViews, int imageUser) {
+    public ImatgesP(String title, String description, String user, int image, int numLikes, int numViews, int imageUser, int imagemiddle,int imageRecomended) {
         this.title = title;
         this.description = description;
         this.user = user;
@@ -18,6 +20,24 @@ public class ImatgesP {
         this.numLikes = numLikes;
         this.numViews = numViews;
         this.imageUser = imageUser;
+        this.imagemiddle=imagemiddle;
+        this.imageRecomended=imageRecomended;
+    }
+
+    public int getImagemiddle() {
+        return imagemiddle;
+    }
+
+    public void setImagemiddle(int imagemiddle) {
+        this.imagemiddle = imagemiddle;
+    }
+
+    public int getImageRecomended() {
+        return imageRecomended;
+    }
+
+    public void setImageRecomended(int imageRecomended) {
+        this.imageRecomended = imageRecomended;
     }
 
     public String getTitle() {

@@ -10,14 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import cat.itb.pixiv.ClassesModels.ImatgesIllustrationsRecommended;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
 public class NAdapterIllustrationsRecommended extends RecyclerView.Adapter<NAdapterIllustrationsRecommended.NAViewHolder>{
 
-    private List<ImatgesP> imagesList;
+    private List<ImatgesIllustrationsRecommended> imagesList;
 
-    public NAdapterIllustrationsRecommended(List<ImatgesP> imagesList) {
+    public NAdapterIllustrationsRecommended(List<ImatgesIllustrationsRecommended> imagesList) {
         this.imagesList = imagesList;
     }
 
@@ -40,17 +41,18 @@ public class NAdapterIllustrationsRecommended extends RecyclerView.Adapter<NAdap
 
 
     class NAViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageViewimage, imageViewLike;
+        ImageView imageViewimage, imageViewLike,proves;
 
         public NAViewHolder(@NonNull View itemView) {
             super(itemView);
+
             imageViewimage = itemView.findViewById(R.id.image_view_illustrations_recommended);
             imageViewLike = itemView.findViewById(R.id.image_view_illustrations_recommended_like);
         }
 
-        public  void binData(ImatgesP imatgesP){
+        public  void binData(ImatgesIllustrationsRecommended imatgesP){
             final boolean[] heart = {false};
-            imageViewimage.setImageResource(R.drawable.ic_launcher_background);
+            imageViewimage.setImageResource(imatgesP.getImage());
             imageViewLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

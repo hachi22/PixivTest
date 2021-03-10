@@ -12,13 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import cat.itb.pixiv.ClassesModels.ImatgesIllusMangaRanking;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NAdapterRankingIM extends RecyclerView.Adapter<NAdapterRankingIM.RankingIMViewHolder> {
-    private List<ImatgesP> imagesList;
+    private List<ImatgesIllusMangaRanking> imagesList;
 
-    public NAdapterRankingIM(List<ImatgesP> imagesList) {
+    public NAdapterRankingIM(List<ImatgesIllusMangaRanking> imagesList) {
         this.imagesList = imagesList;
     }
 
@@ -44,15 +46,17 @@ public class NAdapterRankingIM extends RecyclerView.Adapter<NAdapterRankingIM.Ra
         TextView textViewUser;
         ImageView imageViewImage;
         ImageView imageLike;
+        CircleImageView imageViewuserImage;
         public RankingIMViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_illustrations_ranking_name);
             textViewUser = itemView.findViewById(R.id.text_view_illustrations_ranking_user);
             imageViewImage = itemView.findViewById(R.id.image_view_illustrations_ranking);
+            imageViewuserImage=itemView.findViewById(R.id.profile_image);
             imageLike = itemView.findViewById(R.id.heart_illustrations_ranking);
         }
 
-        public void binData(ImatgesP imatgesP){
+        public void binData(ImatgesIllusMangaRanking imatgesP){
             final boolean[] heart = {false};
             imageLike.setImageResource(R.drawable.likeheartwhite);
             imageLike.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +71,8 @@ public class NAdapterRankingIM extends RecyclerView.Adapter<NAdapterRankingIM.Ra
 
             textViewTitle.setText(imatgesP.getTitle());
             textViewUser.setText(imatgesP.getUser());
-            imageViewImage.setImageResource(R.drawable.ic_launcher_background);
+            imageViewImage.setImageResource(imatgesP.getImage());
+            imageViewuserImage.setImageResource(imatgesP.getImageUser());
         }
     }
 }
