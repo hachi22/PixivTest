@@ -127,7 +127,7 @@ public class FragmentHomeManga extends Fragment {
         nAdaptersMangaRecommended = new NAdaptersMangaRecommended(mangaRecommendeds);
         recyclerView.setAdapter(nAdaptersMangaRecommended);
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, (mangaRecommendeds.size()+1)/2*1350);
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, (mangaRecommendeds.size()+1)/2*1470);
         recyclerView.setLayoutParams(param);
         
         return rootView;

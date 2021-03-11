@@ -135,7 +135,7 @@ public static FragmentHomeIllustrations getInstance(){
         recyclerView.setAdapter(nAdapterIllustrationsRecommended);
 
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, (imageslist.size()+1)/2*800);
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, (imageslist.size()+1)/2*865);
         recyclerView.setLayoutParams(param);
 
 

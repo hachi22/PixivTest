@@ -84,8 +84,6 @@ public class FragmentHomeNovels extends Fragment {
                 "This refreshing light novel and manga follows Kanade Amakusa, a high school boy who has a power called Absolute Choice.","Shirou",R.raw.novel9,100));
         novelsRecommendeds.add(new ImatgesNovelsRecommended("No longer human",
                 " is considered Dazai's masterpiece and ranks as the second-best selling novel ever in Japan.","Osamu Dazai",R.raw.novel10,400));
-
-//        recyclerView = rootView.findViewById(R.id.recycler_view_novels_ranking);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 //        FirebaseRecyclerOptions<ImatgesP> options = new FirebaseRecyclerOptions.Builder<ImatgesP>()
 //                .setQuery(FireBaseHelper.getReferenceRanking(), ImatgesP.class).build();
@@ -111,7 +109,7 @@ public class FragmentHomeNovels extends Fragment {
         nAdapterNovelsRecommended = new NAdapterNovelsRecommended(novelsRecommendeds);
         recyclerView.setAdapter(nAdapterNovelsRecommended);
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, novelsRecommendeds.size()*500);
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, novelsRecommendeds.size()*650);
         recyclerView.setLayoutParams(param);
 
         return rootView;
