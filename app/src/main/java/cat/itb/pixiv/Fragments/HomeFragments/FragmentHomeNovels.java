@@ -109,9 +109,6 @@ public class FragmentHomeNovels extends Fragment {
         nAdapterNovelsRecommended = new NAdapterNovelsRecommended(novelsRecommendeds);
         recyclerView.setAdapter(nAdapterNovelsRecommended);
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, novelsRecommendeds.size()*650);
-        recyclerView.setLayoutParams(param);
-
         return rootView;
     }
 

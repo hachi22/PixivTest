@@ -92,6 +92,7 @@ public static FragmentHomeIllustrations getInstance(){
 
 
 
+
 //        recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_ranking);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 //        FirebaseRecyclerOptions<ImatgesP> options = new FirebaseRecyclerOptions.Builder<ImatgesP>()
@@ -133,10 +134,6 @@ public static FragmentHomeIllustrations getInstance(){
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         nAdapterIllustrationsRecommended = new NAdapterIllustrationsRecommended(imageslist);
         recyclerView.setAdapter(nAdapterIllustrationsRecommended);
-
-
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, (imageslist.size()+1)/2*865);
-        recyclerView.setLayoutParams(param);
 
 
         return rootView;
