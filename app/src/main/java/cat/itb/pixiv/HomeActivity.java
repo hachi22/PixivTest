@@ -1,5 +1,8 @@
 package cat.itb.pixiv;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,21 +11,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-
-
-
-import android.os.Bundle;
-import android.view.MenuItem;
-
-
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
-import cat.itb.pixiv.LoginFragments.FragmentFirst;
-import cat.itb.pixiv.LoginFragments.FragmentLogin;
+import cat.itb.pixiv.Adapater.SlideViewAdapter;
+import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
+import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
+import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     ViewPager viewPager;
     TabLayout tabLayout;
     private MaterialToolbar topAppBar;
@@ -43,18 +42,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView=findViewById(R.id.navigator_view);
         drawerLayout=findViewById(R.id.drawer_layout);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new FragmentFirst())
-                .commit();
-/*
         SlideViewAdapter slideViewAdapter=new SlideViewAdapter(getSupportFragmentManager());
         slideViewAdapter.addFragment(FragmentHomeIllustrations.getInstance(),"Illustrations");
         slideViewAdapter.addFragment(FragmentHomeManga.getInstance(),"Manga");
         slideViewAdapter.addFragment(FragmentHomeNovels.getInstance(),"Novels");
         viewPager.setAdapter(slideViewAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
- */
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -93,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    public void loadFragment(Fragment newFragment) {
+    private void loadFragment(Fragment newFragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, newFragment,newFragment.getClass().getName())
                 .commit();
