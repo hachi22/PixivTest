@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
+import cat.itb.pixiv.HomeFragment;
 import cat.itb.pixiv.R;
 
 public class FragmentLogin extends Fragment {
@@ -61,7 +62,7 @@ public class FragmentLogin extends Fragment {
                         passwordInput.setError("");
                         FragmentManager manager = getFragmentManager();
                         FragmentTransaction transaction = manager.beginTransaction();
-                        transaction.replace(R.id.fragment_container, new FragmentHomeIllustrations()).commit();
+                        transaction.replace(R.id.fragment_container, new HomeFragment()).commit();
                     }
                 }
             }

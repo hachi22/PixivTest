@@ -22,13 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 import cat.itb.pixiv.LoginFragments.FragmentFirst;
 import cat.itb.pixiv.LoginFragments.FragmentLogin;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    ViewPager viewPager;
-    TabLayout tabLayout;
-    private MaterialToolbar topAppBar;
-    private NavigationView navigationView;
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,66 +30,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
 
-
-        viewPager = findViewById(R.id.slide_view_pager);
-        tabLayout=findViewById(R.id.tablayout);
-        topAppBar=findViewById(R.id.top_appbar);
-        navigationView=findViewById(R.id.navigator_view);
-        drawerLayout=findViewById(R.id.drawer_layout);
-
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new FragmentFirst())
                 .commit();
-/*
-        SlideViewAdapter slideViewAdapter=new SlideViewAdapter(getSupportFragmentManager());
-        slideViewAdapter.addFragment(FragmentHomeIllustrations.getInstance(),"Illustrations");
-        slideViewAdapter.addFragment(FragmentHomeManga.getInstance(),"Manga");
-        slideViewAdapter.addFragment(FragmentHomeNovels.getInstance(),"Novels");
-        viewPager.setAdapter(slideViewAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-
- */
-
-        actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this,
-                drawerLayout,
-                topAppBar,
-                R.string.openNavDrawer,
-                R.string.closeNavDrawer
-        );
-
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
-
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
-            super.onBackPressed();
-        }
-    }
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void loadFragment(Fragment newFragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, newFragment,newFragment.getClass().getName())
-                .commit();
-    }
 }

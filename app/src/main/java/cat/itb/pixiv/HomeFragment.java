@@ -1,14 +1,20 @@
 package cat.itb.pixiv;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -20,7 +26,7 @@ import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     ViewPager viewPager;
     TabLayout tabLayout;
@@ -30,19 +36,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme);
-        setContentView(R.layout.activity_main);
+    }
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_main, container, false);
 
+        viewPager = v.findViewById(R.id.slide_view_pager);
+        tabLayout= v.findViewById(R.id.tablayout);
+        topAppBar= v.findViewById(R.id.top_appbar);
+        navigationView= v.findViewById(R.id.navigator_view);
+        drawerLayout= v.findViewById(R.id.drawer_layout);
 
-        viewPager = findViewById(R.id.slide_view_pager);
-        tabLayout=findViewById(R.id.tablayout);
-        topAppBar=findViewById(R.id.top_appbar);
-        navigationView=findViewById(R.id.navigator_view);
-        drawerLayout=findViewById(R.id.drawer_layout);
-
-        SlideViewAdapter slideViewAdapter=new SlideViewAdapter(getSupportFragmentManager());
+        SlideViewAdapter slideViewAdapter=new SlideViewAdapter(getFragmentManager());
         slideViewAdapter.addFragment(FragmentHomeIllustrations.getInstance(),"Illustrations");
         slideViewAdapter.addFragment(FragmentHomeManga.getInstance(),"Manga");
         slideViewAdapter.addFragment(FragmentHomeNovels.getInstance(),"Novels");
@@ -50,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(viewPager);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this,
+                getActivity(),
                 drawerLayout,
                 topAppBar,
                 R.string.openNavDrawer,
@@ -62,8 +70,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        return v;
+
     }
 
+    /*
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -73,6 +84,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+     */
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -84,11 +96,5 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void loadFragment(Fragment newFragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, newFragment,newFragment.getClass().getName())
-                .commit();
     }
 }
