@@ -50,7 +50,7 @@ public class FragmentRegister extends Fragment {
                 if (registerUser()){
                     FragmentManager manager = getFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    transaction.replace(R.id.fragment_container, new HomeFragment().commit();
+                    transaction.replace(R.id.fragment_container, new HomeFragment()).commit();
                 }
             }
         });
