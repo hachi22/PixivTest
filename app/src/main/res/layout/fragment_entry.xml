@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/colorPrimary"
-        android:textSize="30sp"
+        android:textSize="60sp"
         android:textStyle="italic"/>
 
     <Button
