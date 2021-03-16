@@ -9,16 +9,19 @@ public class IllustrationClass implements Parcelable {
     String IllustrationImgUrl;
     String userName;
     String userImgUrl;
+    boolean imgpriv;
 
     public IllustrationClass(){}
 
-    public IllustrationClass(String idIllustration, String title, String illustrationImgUrl, String userName, String userImgUrl) {
+    public IllustrationClass(String idIllustration, String title, String illustrationImgUrl, String userName, String userImgUrl, boolean imgpriv) {
         this.idIllustration = idIllustration;
         this.title = title;
         IllustrationImgUrl = illustrationImgUrl;
         this.userName = userName;
         this.userImgUrl = userImgUrl;
+        this.imgpriv = imgpriv;
     }
+
 
     protected IllustrationClass(Parcel in) {
         idIllustration = in.readString();
@@ -26,6 +29,22 @@ public class IllustrationClass implements Parcelable {
         IllustrationImgUrl = in.readString();
         userName = in.readString();
         userImgUrl = in.readString();
+        imgpriv = in.readByte() != 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idIllustration);
+        dest.writeString(title);
+        dest.writeString(IllustrationImgUrl);
+        dest.writeString(userName);
+        dest.writeString(userImgUrl);
+        dest.writeByte((byte) (imgpriv ? 1 : 0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<IllustrationClass> CREATOR = new Creator<IllustrationClass>() {
@@ -39,20 +58,6 @@ public class IllustrationClass implements Parcelable {
             return new IllustrationClass[size];
         }
     };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(idIllustration);
-        dest.writeString(title);
-        dest.writeString(IllustrationImgUrl);
-        dest.writeString(userName);
-        dest.writeString(userImgUrl);
-    }
 
     public String getIdIllustration() {
         return idIllustration;

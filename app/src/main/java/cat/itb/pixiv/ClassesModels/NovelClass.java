@@ -12,10 +12,11 @@ public class NovelClass implements Parcelable {
     int likesNumber;
     String novelImgUrl;
     String userImgUrl;
+    boolean imgpriv;
 
     public NovelClass(){}
 
-    public NovelClass(String novelId, int charactersNumbers, String title, String description, String username, int likesNumber, String novelImgUrl, String userImgUrl) {
+    public NovelClass(String novelId, int charactersNumbers, String title, String description, String username, int likesNumber, String novelImgUrl, String userImgUrl, boolean imgpriv) {
         this.novelId = novelId;
         this.charactersNumbers = charactersNumbers;
         this.title = title;
@@ -24,6 +25,7 @@ public class NovelClass implements Parcelable {
         this.likesNumber = likesNumber;
         this.novelImgUrl = novelImgUrl;
         this.userImgUrl = userImgUrl;
+        this.imgpriv = imgpriv;
     }
 
     protected NovelClass(Parcel in) {
@@ -35,6 +37,7 @@ public class NovelClass implements Parcelable {
         likesNumber = in.readInt();
         novelImgUrl = in.readString();
         userImgUrl = in.readString();
+        imgpriv = in.readByte() != 0;
     }
 
     public static final Creator<NovelClass> CREATOR = new Creator<NovelClass>() {
@@ -64,6 +67,7 @@ public class NovelClass implements Parcelable {
         dest.writeInt(likesNumber);
         dest.writeString(novelImgUrl);
         dest.writeString(userImgUrl);
+        dest.writeByte((byte) (imgpriv ? 1 : 0));
     }
 
     public String getNovelId() {
@@ -128,5 +132,13 @@ public class NovelClass implements Parcelable {
 
     public void setUserImgUrl(String userImgUrl) {
         this.userImgUrl = userImgUrl;
+    }
+
+    public boolean isImgpriv() {
+        return imgpriv;
+    }
+
+    public void setImgpriv(boolean imgpriv) {
+        this.imgpriv = imgpriv;
     }
 }

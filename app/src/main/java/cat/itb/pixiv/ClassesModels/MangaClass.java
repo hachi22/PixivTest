@@ -11,12 +11,13 @@ public class MangaClass implements Parcelable {
     String userName;
     String mangaImgUrl;
     String userImgUrl;
+    boolean imgpriv;
 
     public MangaClass(){
 
     }
 
-    public MangaClass(String idManga, String title, String description, int likesNumber, String userName, String mangaImgUrl, String userImgUrl) {
+    public MangaClass(String idManga, String title, String description, int likesNumber, String userName, String mangaImgUrl, String userImgUrl, boolean imgpriv) {
         this.idManga = idManga;
         this.title = title;
         this.description = description;
@@ -24,6 +25,7 @@ public class MangaClass implements Parcelable {
         this.userName = userName;
         this.mangaImgUrl = mangaImgUrl;
         this.userImgUrl = userImgUrl;
+        this.imgpriv = imgpriv;
     }
 
     protected MangaClass(Parcel in) {
@@ -34,6 +36,7 @@ public class MangaClass implements Parcelable {
         userName = in.readString();
         mangaImgUrl = in.readString();
         userImgUrl = in.readString();
+        imgpriv = in.readByte() != 0;
     }
 
     public static final Creator<MangaClass> CREATOR = new Creator<MangaClass>() {
@@ -47,7 +50,6 @@ public class MangaClass implements Parcelable {
             return new MangaClass[size];
         }
     };
-
     @Override
     public int describeContents() {
         return 0;
@@ -62,8 +64,8 @@ public class MangaClass implements Parcelable {
         dest.writeString(userName);
         dest.writeString(mangaImgUrl);
         dest.writeString(userImgUrl);
+        dest.writeByte((byte) (imgpriv ? 1 : 0));
     }
-
     public String getIdManga() {
         return idManga;
     }
@@ -118,5 +120,13 @@ public class MangaClass implements Parcelable {
 
     public void setUserImgUrl(String userImgUrl) {
         this.userImgUrl = userImgUrl;
+    }
+
+    public boolean isImgpriv() {
+        return imgpriv;
+    }
+
+    public void setImgpriv(boolean imgpriv) {
+        this.imgpriv = imgpriv;
     }
 }
