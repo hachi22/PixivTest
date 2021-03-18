@@ -127,12 +127,14 @@
                     android:id="@+id/radio_button_public_illustrations"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
                     android:text="Make public"/>
 
                 <RadioButton
                     android:id="@+id/radio_button_private_illustrations"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
                     android:text="Make private"/>
 
             </RadioGroup>
