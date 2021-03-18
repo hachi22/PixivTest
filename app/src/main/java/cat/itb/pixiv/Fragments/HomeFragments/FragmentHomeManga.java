@@ -80,7 +80,10 @@ public class FragmentHomeManga extends Fragment {
 //        adapterRecommended.setContext(getContext());
 //        recyclerView.setAdapter(adapterRecommended);
 
-
+        recyclerView = rootView.findViewById(R.id.recycler_view_manga_mangas);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        nAdaptersMangaRecommended = new NAdaptersMangaRecommended(mangaRecommendeds);
+        recyclerView.setAdapter(nAdaptersMangaRecommended);
         
         return rootView;
     }

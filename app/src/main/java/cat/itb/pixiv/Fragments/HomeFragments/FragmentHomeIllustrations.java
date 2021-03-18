@@ -57,6 +57,7 @@ public static FragmentHomeIllustrations getInstance(){
 
 
 
+
 //        recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_ranking);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 //        FirebaseRecyclerOptions<ImatgesP> options = new FirebaseRecyclerOptions.Builder<ImatgesP>()
@@ -85,11 +86,6 @@ public static FragmentHomeIllustrations getInstance(){
 //        adapterRecomended = new AdapterIlustrationsRecomended(options3);
 //        adapterRecomended.setContext(getContext());
 //        recyclerView.setAdapter(adapterRecomended);
-
-
-
-
-
 
         return rootView;
     }
