@@ -25,6 +25,7 @@ import cat.itb.pixiv.Adapater.SlideViewAdapter;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
+import cat.itb.pixiv.Fragments.NavigationDrawerFragments.YourWorksFragment;
 
 public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -88,6 +89,11 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.yourWorks:
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new YourWorksFragment()).commit();
+                break;
+        }
         return true;
     }
     @Override
