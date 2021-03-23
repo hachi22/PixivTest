@@ -16,9 +16,6 @@ import com.google.firebase.database.DatabaseReference;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterIlustrationsRecomended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterPopularLives;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIM;
-import cat.itb.pixiv.Adapater.NormalAdapters.NAdapterIllustrationsRecommended;
-import cat.itb.pixiv.Adapater.NormalAdapters.NAdapterPopularLives;
-import cat.itb.pixiv.Adapater.NormalAdapters.NAdapterRankingIM;
 import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.R;
 
