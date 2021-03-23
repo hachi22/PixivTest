@@ -14,9 +14,6 @@ import com.google.firebase.database.DatabaseReference;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterMangaRecommended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterPixivVision;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIM;
-import cat.itb.pixiv.Adapater.NormalAdapters.NAdapterPixivVision;
-import cat.itb.pixiv.Adapater.NormalAdapters.NAdapterRankingIM;
-import cat.itb.pixiv.Adapater.NormalAdapters.NAdaptersMangaRecommended;
 import cat.itb.pixiv.R;
 
 public class FragmentHomeManga extends Fragment {
@@ -79,12 +76,12 @@ public class FragmentHomeManga extends Fragment {
 //        adapterRecommended = new AdapterMangaRecommended(options3);
 //        adapterRecommended.setContext(getContext());
 //        recyclerView.setAdapter(adapterRecommended);
-
-        recyclerView = rootView.findViewById(R.id.recycler_view_manga_mangas);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        nAdaptersMangaRecommended = new NAdaptersMangaRecommended(mangaRecommendeds);
-        recyclerView.setAdapter(nAdaptersMangaRecommended);
-        
+//
+//        recyclerView = rootView.findViewById(R.id.recycler_view_manga_mangas);
+//        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+//        nAdaptersMangaRecommended = new NAdaptersMangaRecommended(mangaRecommendeds);
+//        recyclerView.setAdapter(nAdaptersMangaRecommended);
+//
         return rootView;
     }
 
