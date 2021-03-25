@@ -118,17 +118,22 @@ public class YourWorksFragment extends Fragment {
             public void onClick(View v) {
                 switch (submitWorkSegunRecycler){
                     case 1:
+//                        cambiarFragmentSumbitWork();
                         break;
                     case 2:
+//                        cambiarFragmentSumbitWork();
                         break;
                     case 3:
+//                        cambiarFragmentSumbitWork();
                         break;
                 }
             }
         });
-
-
         return rootView;
+    }
+
+    public void cambiarFragmentSumbitWork(Fragment fragment){
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 
 }
