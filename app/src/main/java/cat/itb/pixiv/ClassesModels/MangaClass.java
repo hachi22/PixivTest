@@ -12,6 +12,15 @@ public class MangaClass implements Parcelable {
     String mangaImgUrl;
     String userImgUrl;
     boolean imgpriv;
+    private String key;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public MangaClass(){
 

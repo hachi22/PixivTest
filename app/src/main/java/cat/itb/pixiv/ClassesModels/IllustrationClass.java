@@ -10,6 +10,15 @@ public class IllustrationClass implements Parcelable {
     String userName;
     String userImgUrl;
     boolean imgpriv;
+    private String key;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public IllustrationClass(){}
 
