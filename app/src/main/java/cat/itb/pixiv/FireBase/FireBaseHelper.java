@@ -46,8 +46,6 @@ public class FireBaseHelper {
     private static DatabaseReference referenceNovelsRecommended;
     private static DatabaseReference referenceNovelsRanking;
 
-
-
     private static String keyU;
 
     public static  String urlImage;
@@ -63,9 +61,9 @@ public class FireBaseHelper {
 
 
 
-    private static DatabaseReference userMyWorksPrivateIllustrations;
-    private static DatabaseReference userMyWorksPrivateManga;
-    private static DatabaseReference userMyWorksPrivateNovels;
+    private static DatabaseReference userMyWorksIllustrations;
+    private static DatabaseReference userMyWorksManga;
+    private static DatabaseReference userMyWorksNovels;
 
     private static DatabaseReference userMyWorksPublicIllustrations;
     private static DatabaseReference userMyWorksPublicManga;
@@ -74,6 +72,8 @@ public class FireBaseHelper {
     private static DatabaseReference userCollectionsIllustrations;
     private static DatabaseReference userCollectionsManga;
     private static DatabaseReference userCollectionsNovels;
+
+
 
     public static void setAllReferences(){
         storageImageReference = FirebaseStorage.getInstance().getReference().child("img_comprimidas");
@@ -92,14 +92,14 @@ public class FireBaseHelper {
         referenceNovelsRanking = referenceImage.child("NovelsRanking");
 
 
-        DatabaseReference userMyWorksPrivate = referenceUsers.child(keyU).child("MyWorks").child("Private");
-        userMyWorksPrivateIllustrations= userMyWorksPrivate.child("Illustration");
-        userMyWorksPrivateManga= userMyWorksPrivate.child("Manga");
-        userMyWorksPrivateNovels = userMyWorksPrivate.child("Novels");
-        DatabaseReference userMyWorksPublic = referenceUsers.child(keyU).child("MyWorks").child("public");
-        userMyWorksPublicIllustrations= userMyWorksPublic.child("Illustration");
-        userMyWorksPublicManga= userMyWorksPublic.child("Manga");
-        userMyWorksPublicNovels = userMyWorksPublic.child("Novels");
+        DatabaseReference userMyWorks = referenceUsers.child(keyU).child("MyWorks");
+        userMyWorksIllustrations= userMyWorks.child("Illustration");
+        userMyWorksManga= userMyWorks.child("Manga");
+        userMyWorksNovels = userMyWorks.child("Novels");
+//        DatabaseReference userMyWorksPublic = referenceUsers.child(keyU).child("MyWorks").child("public");
+//        userMyWorksPublicIllustrations= userMyWorksPublic.child("Illustration");
+//        userMyWorksPublicManga= userMyWorksPublic.child("Manga");
+//        userMyWorksPublicNovels = userMyWorksPublic.child("Novels");
 
         DatabaseReference userCollections = referenceUsers.child(keyU).child("Collections");
         userCollectionsIllustrations = userCollections.child("Illustration");
@@ -193,20 +193,20 @@ public class FireBaseHelper {
 //endregion
 
     //region SUBIR YOUR WORKS
-    public static void subirMyWork(IllustrationClass illus, String myWorkPackage, String privatePublic){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(privatePublic).child(myWorkPackage).getRef();
+    public static void subirMyWork(IllustrationClass illus, String myWorkPackage){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         String keyI = ref.push().getKey();
         illus.setKey(keyI);
         ref.child(keyI).setValue(illus);
     }
-    public static void subirMyWork(MangaClass manga, String myWorkPackage, String privatePublic){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(privatePublic).child(myWorkPackage).getRef();
+    public static void subirMyWork(MangaClass manga, String myWorkPackage){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         String keyI = ref.push().getKey();
         manga.setKey(keyI);
         ref.child(keyI).setValue(manga);
     }
-    public static void subirMyWork(NovelClass novel, String myWorkPackage, String privatePublic){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(privatePublic).child(myWorkPackage).getRef();
+    public static void subirMyWork(NovelClass novel, String myWorkPackage){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         String keyI = ref.push().getKey();
         novel.setKey(keyI);
         ref.child(keyI).setValue(novel);
@@ -214,16 +214,16 @@ public class FireBaseHelper {
     //endregion
 
     //region ELIMINAR YOUR WORKS
-    public static void eliminarMyWork(IllustrationClass illus,String myWorkPackage, String privatePublic){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(privatePublic).child(myWorkPackage).getRef();
+    public static void eliminarMyWork(IllustrationClass illus,String myWorkPackage){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         ref.child(illus.getKey()).removeValue();
     }
-    public static void eliminarMyWork(MangaClass manga,String myWorkPackage, String privatePublic){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(privatePublic).child(myWorkPackage).getRef();
+    public static void eliminarMyWork(MangaClass manga,String myWorkPackage){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         ref.child(manga.getKey()).removeValue();
     }
-    public static void eliminarMyWork(NovelClass novels,String myWorkPackage, String privatePublic){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(privatePublic).child(myWorkPackage).getRef();
+    public static void eliminarMyWork(NovelClass novels,String myWorkPackage){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         ref.child(novels.getKey()).removeValue();
     }
 //endregion
@@ -295,5 +295,104 @@ public class FireBaseHelper {
 
     }
     //endregion
+
+
+    public static FirebaseDatabase getDatabase() {
+        return database;
+    }
+
+
+    public static DatabaseReference getReferenceIllustrationsRecommended() {
+        return referenceIllustrationsRecommended;
+    }
+
+    public static DatabaseReference getReferenceIllustrationsRanking() {
+        return referenceIllustrationsRanking;
+    }
+
+    public static DatabaseReference getReferenceIllustrationsPopularLives() {
+        return referenceIllustrationsPopularLives;
+    }
+
+    public static DatabaseReference getReferenceMangaRecommended() {
+        return referenceMangaRecommended;
+    }
+
+    public static DatabaseReference getReferenceMangaRanking() {
+        return referenceMangaRanking;
+    }
+
+    public static DatabaseReference getReferenceMangaPixivVision() {
+        return referenceMangaPixivVision;
+    }
+
+    public static DatabaseReference getReferenceNovelsRecommended() {
+        return referenceNovelsRecommended;
+    }
+
+    public static DatabaseReference getReferenceNovelsRanking() {
+        return referenceNovelsRanking;
+    }
+
+    public static String getUrlImage() {
+        return urlImage;
+    }
+
+    public static DatabaseReference getReferenceUsers() {
+        return referenceUsers;
+    }
+
+    public static DatabaseReference getReferenceImage() {
+        return referenceImage;
+    }
+
+    public static DatabaseReference getReferenceImageUser() {
+        return referenceImageUser;
+    }
+
+    public static String getDefaultImage() {
+        return defaultImage;
+    }
+
+    public static StorageReference getStorageImageReference() {
+        return storageImageReference;
+    }
+
+    public static DatabaseReference getUserMyWorksIllustrations() {
+        return userMyWorksIllustrations;
+    }
+
+    public static DatabaseReference getUserMyWorksManga() {
+        return userMyWorksManga;
+    }
+
+    public static DatabaseReference getUserMyWorksNovels() {
+        return userMyWorksNovels;
+    }
+
+    public static DatabaseReference getUserMyWorksPublicIllustrations() {
+        return userMyWorksPublicIllustrations;
+    }
+
+    public static DatabaseReference getUserMyWorksPublicManga() {
+        return userMyWorksPublicManga;
+    }
+
+    public static DatabaseReference getUserMyWorksPublicNovels() {
+        return userMyWorksPublicNovels;
+    }
+
+    public static DatabaseReference getUserCollectionsIllustrations() {
+        return userCollectionsIllustrations;
+    }
+
+    public static DatabaseReference getUserCollectionsManga() {
+        return userCollectionsManga;
+    }
+
+    public static DatabaseReference getUserCollectionsNovels() {
+        return userCollectionsNovels;
+    }
 }
+
 

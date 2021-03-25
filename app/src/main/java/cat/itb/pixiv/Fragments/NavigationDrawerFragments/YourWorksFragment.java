@@ -64,7 +64,7 @@ public class YourWorksFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseRecyclerOptions<IllustrationClass> options = new FirebaseRecyclerOptions.Builder<IllustrationClass>()
-                .setQuery(FireBaseHelper.getReferenceRanking(), IllustrationClass.class).build();
+                .setQuery(FireBaseHelper.getUserMyWorksIllustrations(), IllustrationClass.class).build();
         adapterYourWorksIllustrations = new AdapterYourWorksIllustrations(options);
         adapterYourWorksIllustrations.setContext(getContext());
         recyclerView.setAdapter(adapterYourWorksIllustrations);
@@ -77,7 +77,7 @@ public class YourWorksFragment extends Fragment {
                 if(numbut==1){
 
                     FirebaseRecyclerOptions<IllustrationClass> options = new FirebaseRecyclerOptions.Builder<IllustrationClass>()
-                            .setQuery(FireBaseHelper.getReferenceRanking(), IllustrationClass.class).build();
+                            .setQuery(FireBaseHelper.getUserMyWorksIllustrations(), IllustrationClass.class).build();
                     adapterYourWorksIllustrations = new AdapterYourWorksIllustrations(options);
                     adapterYourWorksIllustrations.setContext(getContext());
                     recyclerView.setAdapter(adapterYourWorksIllustrations);
@@ -86,7 +86,7 @@ public class YourWorksFragment extends Fragment {
                 }else if(numbut==2){
 
                     FirebaseRecyclerOptions<MangaClass> options = new FirebaseRecyclerOptions.Builder<MangaClass>()
-                            .setQuery(FireBaseHelper.getReferenceRanking(), MangaClass.class).build();
+                            .setQuery(FireBaseHelper.getUserMyWorksManga(), MangaClass.class).build();
                     adapterYourWorksManga = new AdapterYourWorksManga(options);
                     adapterYourWorksManga.setContext(getContext());
                     recyclerView.setAdapter(adapterYourWorksManga);
@@ -94,7 +94,8 @@ public class YourWorksFragment extends Fragment {
                 }else{
 
                     FirebaseRecyclerOptions<NovelClass> options = new FirebaseRecyclerOptions.Builder<NovelClass>()
-                            .setQuery(FireBaseHelper.getReferenceRanking(), NovelClass.class).build();
+                            .setQuery(FireBaseHelper.getUserMyWorksNovels()
+                                    , NovelClass.class).build();
                     adapterYourWorksNovels = new AdapterYourWorksNovels(options);
                     adapterYourWorksNovels.setContext(getContext());
                     recyclerView.setAdapter(adapterYourWorksNovels);
