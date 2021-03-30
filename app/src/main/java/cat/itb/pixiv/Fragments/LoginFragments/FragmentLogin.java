@@ -1,6 +1,7 @@
-package cat.itb.pixiv.LoginFragments;
+package cat.itb.pixiv.Fragments.LoginFragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
+
+import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.HomeFragment;
 import cat.itb.pixiv.R;
 
@@ -29,6 +31,7 @@ public class FragmentLogin extends Fragment {
     TextInputEditText passwordEditText;
     Button login;
     Button register;
+    FireBaseHelper fireBaseHelper;
 
 
     @Override
@@ -58,11 +61,23 @@ public class FragmentLogin extends Fragment {
                         passwordInput.setError("Insert a valid password");
                     } else if(passwordEditText.getText().toString().length()<8) {
                         passwordInput.setError("Insert a valid password");
+
+//                    }else if(){
+//
                     } else {
-                        passwordInput.setError("");
-                        FragmentManager manager = getFragmentManager();
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        transaction.replace(R.id.fragment_container, new HomeFragment()).commit();
+                        fireBaseHelper.compararUserPassword(passwordEditText.getText().toString(),loginEditText.getText().toString());
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                if(comprobarPasUser()){
+                                    passwordInput.setError("");
+                                    FragmentManager manager = getFragmentManager();
+                                    FragmentTransaction transaction = manager.beginTransaction();
+                                    transaction.replace(R.id.fragment_container, new HomeFragment()).commit();
+                                }
+                            }
+                        }, 200);   //5 seconds
+
                     }
                 }
             }
@@ -77,5 +92,19 @@ public class FragmentLogin extends Fragment {
             }
         });
         return v;
+    }
+
+    public boolean comprobarPasUser(){
+
+        boolean [] f = fireBaseHelper.userExists;
+        System.out.println("fuck");
+        if(f[0]){
+            if(f[1]){
+                return true;
+            }else passwordInput.setError("Wrong Password");
+
+        }else loginInput.setError("Wrong user name");
+
+        return false;
     }
 }

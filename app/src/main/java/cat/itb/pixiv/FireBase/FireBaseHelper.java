@@ -73,14 +73,17 @@ public class FireBaseHelper {
     private static DatabaseReference userCollectionsManga;
     private static DatabaseReference userCollectionsNovels;
 
+    private static DatabaseReference userMyWorks;
 
+    public static void setFirstsReferneces(){
+        database = FirebaseDatabase.getInstance();
+        referenceUsers = database.getReference("Users");
+        referenceImage = database.getReference("Image");
+    }
 
     public static void setAllReferences(){
         storageImageReference = FirebaseStorage.getInstance().getReference().child("img_comprimidas");
 
-        database = FirebaseDatabase.getInstance();
-        referenceUsers = database.getReference("Users");
-        referenceImage = database.getReference("Image");
 
         referenceIllustrationsRecommended  =  referenceImage.child("IllustrationsRecommended");
         referenceIllustrationsRanking = referenceImage.child("IllustrationRanking");
@@ -92,7 +95,7 @@ public class FireBaseHelper {
         referenceNovelsRanking = referenceImage.child("NovelsRanking");
 
 
-        DatabaseReference userMyWorks = referenceUsers.child(keyU).child("MyWorks");
+        userMyWorks = referenceUsers.child(keyU).child("MyWorks");
         userMyWorksIllustrations= userMyWorks.child("Illustration");
         userMyWorksManga= userMyWorks.child("Manga");
         userMyWorksNovels = userMyWorks.child("Novels");
@@ -115,33 +118,39 @@ public class FireBaseHelper {
 
     }
 
+    public static boolean[] userExists = {false,false};
 
     public static String getKeyU() {
         return keyU;
     }
 
-    public static boolean[] compararUserPassword(final String password, final String userName){
-        final boolean[] userExists = {false,false};
+    public static void compararUserPassword(final String password, final String userName){
+        System.out.println("inici");
         referenceUsers.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(final DataSnapshot snapshot : dataSnapshot.getChildren()){
                     User user = snapshot.getValue(User.class);
                     if(user!=null){
                         if(user.getUsername().equals(userName)){
+                            System.out.println(user.getUsername());
+                            System.out.println(userName);
                             userExists[0] = true;
                             if(user.getPassword().equals(password)){
                                 keyU = user.getKey();
                                 userExists[1] = true;
                             }
                         }
+                    }else{
+
                     }
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
-        return userExists;
+
     }
 
 

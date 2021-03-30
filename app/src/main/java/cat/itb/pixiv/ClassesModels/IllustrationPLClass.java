@@ -9,15 +9,17 @@ public class IllustrationPLClass implements Parcelable {
     int numViews;
     String userImageUrl;
     String pLImageUrl;
+    String Title;
 
     public IllustrationPLClass(){}
 
-    public IllustrationPLClass(String popularLiveId, String userName, int numViews, String userImageUrl, String pLImageUrl) {
+    public IllustrationPLClass(String popularLiveId, String userName, int numViews, String userImageUrl, String pLImageUrl, String title) {
         this.popularLiveId = popularLiveId;
         this.userName = userName;
         this.numViews = numViews;
         this.userImageUrl = userImageUrl;
         this.pLImageUrl = pLImageUrl;
+        Title = title;
     }
 
     protected IllustrationPLClass(Parcel in) {
@@ -92,5 +94,13 @@ public class IllustrationPLClass implements Parcelable {
 
     public void setpLImageUrl(String pLImageUrl) {
         this.pLImageUrl = pLImageUrl;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 }

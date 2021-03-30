@@ -13,12 +13,13 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
+import cat.itb.pixiv.ClassesModels.IllustrationClass;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
-public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<ImatgesP, AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended> {
+public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<IllustrationClass, AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended> {
 
-    private ImatgesP model;
+    private IllustrationClass model;
     private Context context;
 
     public Context getContext() {
@@ -28,12 +29,12 @@ public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<Imatg
         this.context = context;
     }
 
-    public AdapterIlustrationsRecomended(@NonNull FirebaseRecyclerOptions<ImatgesP> options) {
+    public AdapterIlustrationsRecomended(@NonNull FirebaseRecyclerOptions<IllustrationClass> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended holder, int position, @NonNull ImatgesP model) {
+    protected void onBindViewHolder(@NonNull AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended holder, int position, @NonNull IllustrationClass model) {
         this.model = model;
         holder.bind();
     }
@@ -57,7 +58,7 @@ public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<Imatg
         }
 
         public void bind(){
-            Picasso.with(getContext()).load(model.getImage()).into(imageViewimage);
+            Picasso.with(getContext()).load(model.getIllustrationImgUrl()).into(imageViewimage);
 
             final boolean[] heart = {false};
             imageViewLike.setOnClickListener(new View.OnClickListener() {
