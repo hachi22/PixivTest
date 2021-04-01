@@ -1,10 +1,11 @@
-package cat.itb.pixiv;
+package cat.itb.pixiv.Fragments.HomeFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,10 +23,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import cat.itb.pixiv.Adapater.SlideViewAdapter;
+import cat.itb.pixiv.BlankFragment;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
-import cat.itb.pixiv.Fragments.NavigationDrawerFragments.YourWorksFragment;
+import cat.itb.pixiv.R;
 
 public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -75,25 +77,59 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
 
     }
 
-    /*
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
-            super.onBackPressed();
-        }
-    }
-
-     */
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.yourWorks:
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new YourWorksFragment()).commit();
+
+        int id = item.getItemId();
+
+        switch (id){
+            case R.id.home:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.newest:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.search:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+                case R.id.submitWork:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+                case R.id.yourWorks:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.collection:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.browsingHistory:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.markers:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.following:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.followers:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.myPixiv:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.feedback:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.help:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.settings:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                break;
+            case R.id.muteSettings:
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
                 break;
         }
+
         return true;
     }
     @Override

@@ -19,7 +19,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 
 import cat.itb.pixiv.FireBase.FireBaseHelper;
-import cat.itb.pixiv.HomeFragment;
+import cat.itb.pixiv.Fragments.HomeFragment;
 import cat.itb.pixiv.R;
 
 public class FragmentLogin extends Fragment {
