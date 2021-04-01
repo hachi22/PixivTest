@@ -22,7 +22,8 @@ public class BlankFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
-        FireBaseHelper.obtenerReferencia();
+        FireBaseHelper.setFirstsReferneces();
+        FireBaseHelper.setAllReferences();
 
         return rootView;
     }

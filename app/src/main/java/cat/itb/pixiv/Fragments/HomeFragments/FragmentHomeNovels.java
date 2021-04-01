@@ -1,15 +1,13 @@
 package cat.itb.pixiv.Fragments.HomeFragments;
 
 import android.os.Bundle;
-
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -79,22 +77,24 @@ public class FragmentHomeNovels extends Fragment {
 //                " is considered Dazai's masterpiece and ranks as the second-best selling novel ever in Japan.","Osamu Dazai",R.raw.novel10,400));
 
       
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        FirebaseRecyclerOptions<NovelClass> options = new FirebaseRecyclerOptions.Builder<NovelClass>()
-//                .setQuery(FireBaseHelper.getReferenceRanking(), NovelClass.class).build();
-//        adapterRanking = new AdapterRankingNovels(options);
-//        adapterRanking.setContext(getContext());
-//        recyclerView.setAdapter(adapterRanking);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseRecyclerOptions<NovelClass> options = new FirebaseRecyclerOptions.Builder<NovelClass>()
+                .setQuery(FireBaseHelper.getReferenceNovelsRanking(), NovelClass.class).build();
+        adapterRanking = new AdapterRankingNovels(options);
+        adapterRanking.setContext(getContext());
+        recyclerView.setAdapter(adapterRanking);
 
 
 
-//        recyclerView = rootView.findViewById(R.id.recycler_view_novels_recommended);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        FirebaseRecyclerOptions<ImatgesP> options2 = new FirebaseRecyclerOptions.Builder<ImatgesP>()
-//                .setQuery(FireBaseHelper.getReferenceRecommendedNovels(), ImatgesP.class).build();
-//        adapterRecommended = new AdapterNovelsRecommended(options2);
-//        adapterRecommended.setContext(getContext());
-//        recyclerView.setAdapter(adapterRecommended);
+        recyclerView = rootView.findViewById(R.id.recycler_view_novels_recommended);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseRecyclerOptions<NovelClass> options2 = new FirebaseRecyclerOptions.Builder<NovelClass>()
+                .setQuery(FireBaseHelper.getReferenceNovelsRecommended(), NovelClass.class).build();
+        adapterRecommended = new AdapterNovelsRecommended(options2);
+        adapterRecommended.setContext(getContext());
+        recyclerView.setAdapter(adapterRecommended);
+
+
 //
 //        recyclerView = rootView.findViewById(R.id.recycler_view_novels_recommended);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -104,4 +104,17 @@ public class FragmentHomeNovels extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterRanking.startListening();
+        adapterRecommended.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapterRanking.stopListening();
+        adapterRecommended.stopListening();
+    }
 }

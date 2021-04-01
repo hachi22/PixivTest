@@ -14,12 +14,12 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-import cat.itb.pixiv.ClassesModels.ImatgesP;
+import cat.itb.pixiv.ClassesModels.IllustrationClass;
 import cat.itb.pixiv.R;
 
-public class AdapterRankingIM extends FirebaseRecyclerAdapter<ImatgesP, AdapterRankingIM.GeneralViewHolder> {
+public class AdapterRankingIllustrations extends FirebaseRecyclerAdapter<IllustrationClass, AdapterRankingIllustrations.GeneralViewHolder> {
 
-    private ImatgesP model;
+    private IllustrationClass model;
     private Context context;
 
     public Context getContext() {
@@ -29,12 +29,12 @@ public class AdapterRankingIM extends FirebaseRecyclerAdapter<ImatgesP, AdapterR
         this.context = context;
     }
 
-    public AdapterRankingIM(@NonNull FirebaseRecyclerOptions<ImatgesP> options) {
+    public AdapterRankingIllustrations(@NonNull FirebaseRecyclerOptions<IllustrationClass> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull GeneralViewHolder holder, int position, @NonNull ImatgesP model) {
+    protected void onBindViewHolder(@NonNull GeneralViewHolder holder, int position, @NonNull IllustrationClass model) {
         this.model = model;
         holder.bind();
     }
@@ -42,7 +42,7 @@ public class AdapterRankingIM extends FirebaseRecyclerAdapter<ImatgesP, AdapterR
 
     @NonNull
     @Override
-    public AdapterRankingIM.GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new GeneralViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_illustrations_ranking,parent,false));
 
     }
@@ -64,10 +64,10 @@ public class AdapterRankingIM extends FirebaseRecyclerAdapter<ImatgesP, AdapterR
 
         public void bind(){
             textViewTitle.setText(model.getTitle());
-            textViewUser.setText(model.getUser());
+            textViewUser.setText(model.getUserName());
 
             final boolean[] heart = {false};
-            Picasso.with(getContext()).load(model.getImage()).into(imageViewImage);
+            Picasso.with(getContext()).load(model.getIllustrationImgUrl()).into(imageViewImage);
             imageLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

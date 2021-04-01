@@ -14,12 +14,12 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-import cat.itb.pixiv.ClassesModels.ImatgesP;
+import cat.itb.pixiv.ClassesModels.NovelClass;
 import cat.itb.pixiv.R;
 
-public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<ImatgesP, AdapterNovelsRecommended.ViewHolderNovelsRecommended> {
+public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<NovelClass, AdapterNovelsRecommended.ViewHolderNovelsRecommended> {
 
-    private ImatgesP model;
+    private NovelClass model;
     private Context context;
 
     public Context getContext() {
@@ -29,20 +29,20 @@ public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<ImatgesP, 
         this.context = context;
     }
 
-    public AdapterNovelsRecommended(@NonNull FirebaseRecyclerOptions<ImatgesP> options) {
+    public AdapterNovelsRecommended(@NonNull FirebaseRecyclerOptions<NovelClass> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AdapterNovelsRecommended.ViewHolderNovelsRecommended holder, int position, @NonNull ImatgesP model) {
+    protected void onBindViewHolder(@NonNull ViewHolderNovelsRecommended holder, int position, @NonNull NovelClass model) {
         this.model = model;
         holder.bind();
     }
 
     @NonNull
     @Override
-    public AdapterNovelsRecommended.ViewHolderNovelsRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new AdapterNovelsRecommended.ViewHolderNovelsRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_novels_recommended,parent,false));
+    public ViewHolderNovelsRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolderNovelsRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_novels_recommended,parent,false));
     }
 
     class ViewHolderNovelsRecommended extends RecyclerView.ViewHolder {
@@ -62,7 +62,7 @@ public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<ImatgesP, 
         }
 
         public void bind(){
-            Picasso.with(getContext()).load(model.getImage()).into(imageViewimage);
+            Picasso.with(getContext()).load(model.getNovelImgUrl()).into(imageViewimage);
             final boolean[] heart = {false};
             imageViewlike.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,7 +76,7 @@ public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<ImatgesP, 
 
             textViewTitle.setText(model.getTitle());
             textViewDescription.setText(model.getDescription());
-            textViewNumlikes.setText(model.getNumLikes());
+            textViewNumlikes.setText(model.getLikesNumber());
         }
     }
 }

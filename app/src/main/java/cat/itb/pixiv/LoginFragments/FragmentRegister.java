@@ -15,8 +15,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-
-import cat.itb.pixiv.Fragments.HomeFragments.HomeFragment;
+import cat.itb.pixiv.FireBase.FireBaseHelper;
+import cat.itb.pixiv.Fragments.HomeFragment;
 import cat.itb.pixiv.R;
 
 public class FragmentRegister extends Fragment {
@@ -27,6 +27,7 @@ public class FragmentRegister extends Fragment {
     TextInputEditText passwordEditText;
     TextInputEditText repeatPassEditText;
     Button confirm;
+    FireBaseHelper fireBaseHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,8 @@ public class FragmentRegister extends Fragment {
                     return false;
                 } else {
                     repeatPass.setError("");
+                    System.out.println(usernameEditText.getText().toString()+"                                    "+ passwordEditText.getText().toString());
+                    fireBaseHelper.subirNuevoUser(usernameEditText.getText().toString(), passwordEditText.getText().toString());
                     return true;
                 }
             }

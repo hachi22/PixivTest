@@ -13,10 +13,9 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-import cat.itb.pixiv.ClassesModels.IllustrationClass;
 import cat.itb.pixiv.ClassesModels.MangaClass;
 
-public class AdapterYourWorksManga  extends FirebaseRecyclerAdapter<MangaClass, AdapterYourWorksManga.ViewHolderYourWorks> {
+public class AdapterYourWorksManga extends FirebaseRecyclerAdapter<MangaClass, AdapterYourWorksManga.ViewHolderYourWorks> {
 
     private MangaClass model;
     private Context context;
@@ -33,14 +32,14 @@ public class AdapterYourWorksManga  extends FirebaseRecyclerAdapter<MangaClass, 
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AdapterYourWorksManga.ViewHolderYourWorks holder, int position, @NonNull MangaClass model) {
+    protected void onBindViewHolder(@NonNull ViewHolderYourWorks holder, int position, @NonNull MangaClass model) {
         this.model = model;
         holder.bind();
     }
 
     @NonNull
     @Override
-    public AdapterYourWorksManga.ViewHolderYourWorks onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolderYourWorks onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 

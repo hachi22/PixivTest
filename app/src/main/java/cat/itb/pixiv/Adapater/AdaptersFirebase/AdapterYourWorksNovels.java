@@ -13,7 +13,6 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-import cat.itb.pixiv.ClassesModels.MangaClass;
 import cat.itb.pixiv.ClassesModels.NovelClass;
 
 public class AdapterYourWorksNovels extends FirebaseRecyclerAdapter<NovelClass, AdapterYourWorksNovels.ViewHolderYourWorks> {
@@ -33,14 +32,14 @@ public class AdapterYourWorksNovels extends FirebaseRecyclerAdapter<NovelClass, 
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AdapterYourWorksNovels.ViewHolderYourWorks holder, int position, @NonNull NovelClass model) {
+    protected void onBindViewHolder(@NonNull ViewHolderYourWorks holder, int position, @NonNull NovelClass model) {
         this.model = model;
         holder.bind();
     }
 
     @NonNull
     @Override
-    public AdapterYourWorksNovels.ViewHolderYourWorks onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolderYourWorks onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 

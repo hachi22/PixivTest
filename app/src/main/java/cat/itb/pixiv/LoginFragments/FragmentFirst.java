@@ -13,13 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.R;
 
 public class FragmentFirst extends Fragment {
     TextView title;
     Button login;
     Button register;
-
+    FireBaseHelper fireBaseHelper;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,8 @@ public class FragmentFirst extends Fragment {
                 transaction.replace(R.id.fragment_container, new FragmentRegister()).commit();
             }
         });
+
+        fireBaseHelper.setFirstsReferneces();
         return v;
     }
 }

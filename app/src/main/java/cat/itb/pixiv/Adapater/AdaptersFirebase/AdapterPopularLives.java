@@ -15,12 +15,12 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-import cat.itb.pixiv.ClassesModels.ImatgesP;
+import cat.itb.pixiv.ClassesModels.IllustrationPLClass;
 import cat.itb.pixiv.R;
 
-public class AdapterPopularLives extends FirebaseRecyclerAdapter<ImatgesP,AdapterPopularLives.ViewHolderPopularLives> {
+public class AdapterPopularLives extends FirebaseRecyclerAdapter<IllustrationPLClass, AdapterPopularLives.ViewHolderPopularLives> {
 
-    private ImatgesP model;
+    private IllustrationPLClass model;
     private Context context;
 
 
@@ -31,13 +31,13 @@ public class AdapterPopularLives extends FirebaseRecyclerAdapter<ImatgesP,Adapte
         this.context = context;
     }
 
-    public AdapterPopularLives(@NonNull FirebaseRecyclerOptions<ImatgesP> options) {
+    public AdapterPopularLives(@NonNull FirebaseRecyclerOptions<IllustrationPLClass> options) {
         super(options);
 
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AdapterPopularLives.ViewHolderPopularLives holder, int position, @NonNull ImatgesP model) {
+    protected void onBindViewHolder(@NonNull ViewHolderPopularLives holder, int position, @NonNull IllustrationPLClass model) {
         this.model = model;
         holder.bind();
     }
@@ -45,7 +45,7 @@ public class AdapterPopularLives extends FirebaseRecyclerAdapter<ImatgesP,Adapte
     @SuppressLint("ResourceType")
     @NonNull
     @Override
-    public AdapterPopularLives.ViewHolderPopularLives onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolderPopularLives onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolderPopularLives(LayoutInflater.from(parent.getContext()).inflate(R.id.recycler_view_illustrations_popular_lives,parent,false));
     }
 
@@ -63,7 +63,7 @@ public class AdapterPopularLives extends FirebaseRecyclerAdapter<ImatgesP,Adapte
         }
 
         public void bind(){
-            Picasso.with(getContext()).load(model.getImage()).into(imageView);
+            Picasso.with(getContext()).load(model.getpLImageUrl()).into(imageView);
             textViewTitle.setText(model.getTitle());
             textViewViews.setText(model.getNumViews());
         }
