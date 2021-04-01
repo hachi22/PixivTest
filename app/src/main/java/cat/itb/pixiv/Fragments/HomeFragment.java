@@ -1,4 +1,4 @@
-package cat.itb.pixiv;
+package cat.itb.pixiv.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,6 +26,7 @@ import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
 import cat.itb.pixiv.Fragments.NavigationDrawerFragments.YourWorksFragment;
+import cat.itb.pixiv.R;
 
 public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
