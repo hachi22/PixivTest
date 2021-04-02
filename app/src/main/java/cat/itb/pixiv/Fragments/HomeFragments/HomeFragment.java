@@ -28,6 +28,7 @@ import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
 import cat.itb.pixiv.R;
+import cat.itb.pixiv.SubmitWorkFragments.BottomSheet;
 
 public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -93,8 +94,10 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
                 break;
                 case R.id.submitWork:
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
-                break;
+                    BottomSheet bottomSheet = new BottomSheet();
+                    bottomSheet.show(getFragmentManager(),
+                            "ModalBottomSheet");
+                    break;
                 case R.id.yourWorks:
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
                 break;
