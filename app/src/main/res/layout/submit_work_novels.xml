@@ -104,6 +104,15 @@
 
             </RadioGroup>
 
+            <Button
+                android:id="@+id/submitNovels"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="submit"
+                android:layout_below="@+id/group_radio_button_submit_novels"
+                android:layout_margin="20dp"/>
+
         </RelativeLayout>
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_subitwork_novels"
