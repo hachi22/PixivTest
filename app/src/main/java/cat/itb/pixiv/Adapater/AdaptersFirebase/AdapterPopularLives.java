@@ -16,9 +16,10 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.pixiv.ClassesModels.IllustrationPLClass;
+import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
-public class AdapterPopularLives extends FirebaseRecyclerAdapter<IllustrationPLClass, AdapterPopularLives.ViewHolderPopularLives> {
+public class AdapterPopularLives extends FirebaseRecyclerAdapter<IllustrationPLClass,AdapterPopularLives.ViewHolderPopularLives> {
 
     private IllustrationPLClass model;
     private Context context;
@@ -37,7 +38,7 @@ public class AdapterPopularLives extends FirebaseRecyclerAdapter<IllustrationPLC
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolderPopularLives holder, int position, @NonNull IllustrationPLClass model) {
+    protected void onBindViewHolder(@NonNull AdapterPopularLives.ViewHolderPopularLives holder, int position, @NonNull IllustrationPLClass model) {
         this.model = model;
         holder.bind();
     }
@@ -45,7 +46,7 @@ public class AdapterPopularLives extends FirebaseRecyclerAdapter<IllustrationPLC
     @SuppressLint("ResourceType")
     @NonNull
     @Override
-    public ViewHolderPopularLives onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterPopularLives.ViewHolderPopularLives onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolderPopularLives(LayoutInflater.from(parent.getContext()).inflate(R.id.recycler_view_illustrations_popular_lives,parent,false));
     }
 

@@ -14,6 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
+import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.ClassesModels.MangaClass;
 import cat.itb.pixiv.R;
 
@@ -34,15 +35,15 @@ public class AdapterMangaRecommended extends FirebaseRecyclerAdapter<MangaClass,
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolderMangaRecommended holder, int position, @NonNull MangaClass model) {
+    protected void onBindViewHolder(@NonNull AdapterMangaRecommended.ViewHolderMangaRecommended holder, int position, @NonNull MangaClass model) {
         this.model = model;
         holder.bind();
     }
 
     @NonNull
     @Override
-    public ViewHolderMangaRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolderMangaRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_manga_recommended,parent,false));
+    public AdapterMangaRecommended.ViewHolderMangaRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new AdapterMangaRecommended.ViewHolderMangaRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_manga_recommended,parent,false));
     }
 
     class ViewHolderMangaRecommended extends RecyclerView.ViewHolder {

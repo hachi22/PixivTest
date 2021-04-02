@@ -1,9 +1,6 @@
 package cat.itb.pixiv.Fragments.HomeFragments;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,12 +9,18 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterIlustrationsRecomended;
+import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterMangaRecommended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterPopularLives;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIllustrations;
+import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingMangas;
 import cat.itb.pixiv.ClassesModels.IllustrationClass;
 import cat.itb.pixiv.ClassesModels.IllustrationPLClass;
 import cat.itb.pixiv.FireBase.FireBaseHelper;

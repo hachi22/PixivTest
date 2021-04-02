@@ -14,6 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.pixiv.ClassesModels.IllustrationClass;
+import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
 public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<IllustrationClass, AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended> {
@@ -33,15 +34,15 @@ public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<Illus
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolderIllustrationsRecommended holder, int position, @NonNull IllustrationClass model) {
+    protected void onBindViewHolder(@NonNull AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended holder, int position, @NonNull IllustrationClass model) {
         this.model = model;
         holder.bind();
     }
 
     @NonNull
     @Override
-    public ViewHolderIllustrationsRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolderIllustrationsRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_illustrations_recommended,parent,false));
+    public AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_illustrations_recommended,parent,false));
     }
 
     class ViewHolderIllustrationsRecommended extends RecyclerView.ViewHolder {

@@ -6,6 +6,8 @@ public class User {
     String key;
     String imatgePerfil;
 
+    public User() {
+    }
 
     public User(String username, String password, String key, String imatgePerfil) {
         this.username = username;

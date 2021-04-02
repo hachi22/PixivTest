@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragments.FragmentFirst">
+    tools:context=".Fragments.LoginFragments.FragmentFirst">
 
     <TextView
         android:id="@+id/titleHomeScreen"

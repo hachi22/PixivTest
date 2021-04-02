@@ -1,4 +1,4 @@
-package cat.itb.pixiv.LoginFragments;
+package cat.itb.pixiv.Fragments.LoginFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

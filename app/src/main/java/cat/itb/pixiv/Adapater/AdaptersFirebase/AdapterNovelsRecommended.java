@@ -14,6 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
+import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.ClassesModels.NovelClass;
 import cat.itb.pixiv.R;
 
@@ -34,15 +35,15 @@ public class AdapterNovelsRecommended extends FirebaseRecyclerAdapter<NovelClass
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolderNovelsRecommended holder, int position, @NonNull NovelClass model) {
+    protected void onBindViewHolder(@NonNull AdapterNovelsRecommended.ViewHolderNovelsRecommended holder, int position, @NonNull NovelClass model) {
         this.model = model;
         holder.bind();
     }
 
     @NonNull
     @Override
-    public ViewHolderNovelsRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolderNovelsRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_novels_recommended,parent,false));
+    public AdapterNovelsRecommended.ViewHolderNovelsRecommended onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new AdapterNovelsRecommended.ViewHolderNovelsRecommended(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_novels_recommended,parent,false));
     }
 
     class ViewHolderNovelsRecommended extends RecyclerView.ViewHolder {

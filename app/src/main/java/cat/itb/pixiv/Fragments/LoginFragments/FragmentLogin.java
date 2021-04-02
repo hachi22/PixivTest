@@ -1,4 +1,4 @@
-package cat.itb.pixiv.LoginFragments;
+package cat.itb.pixiv.Fragments.LoginFragments;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
 
 import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.Fragments.HomeFragment;

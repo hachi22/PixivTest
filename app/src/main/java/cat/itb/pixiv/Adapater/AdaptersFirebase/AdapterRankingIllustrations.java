@@ -15,6 +15,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.pixiv.ClassesModels.IllustrationClass;
+import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.R;
 
 public class AdapterRankingIllustrations extends FirebaseRecyclerAdapter<IllustrationClass, AdapterRankingIllustrations.GeneralViewHolder> {
@@ -42,7 +43,7 @@ public class AdapterRankingIllustrations extends FirebaseRecyclerAdapter<Illustr
 
     @NonNull
     @Override
-    public GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterRankingIllustrations.GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new GeneralViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_illustrations_ranking,parent,false));
 
     }

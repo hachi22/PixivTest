@@ -14,6 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
+import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.ClassesModels.MangaPixivVisionClass;
 import cat.itb.pixiv.R;
 
@@ -34,14 +35,14 @@ public class AdapterPixivVision extends FirebaseRecyclerAdapter<MangaPixivVision
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolderPixivVision holder, int position, @NonNull MangaPixivVisionClass model) {
+    protected void onBindViewHolder(@NonNull AdapterPixivVision.ViewHolderPixivVision holder, int position, @NonNull MangaPixivVisionClass model) {
         this.model = model;
         holder.bind();
     }
 
     @NonNull
     @Override
-    public ViewHolderPixivVision onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterPixivVision.ViewHolderPixivVision onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolderPixivVision(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_illustrations_ranking,parent,false));
     }
 
