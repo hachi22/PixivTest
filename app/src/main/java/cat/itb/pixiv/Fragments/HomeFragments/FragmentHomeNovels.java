@@ -14,8 +14,10 @@ import com.google.firebase.database.DatabaseReference;
 
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterNovelsRecommended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingNovels;
+
 import cat.itb.pixiv.ClassesModels.NovelClass;
 import cat.itb.pixiv.FireBase.FireBaseHelper;
+
 import cat.itb.pixiv.R;
 
 public class FragmentHomeNovels extends Fragment {
@@ -50,7 +52,9 @@ public class FragmentHomeNovels extends Fragment {
 
 
 
+
         recyclerView = rootView.findViewById(R.id.recycler_view_novels_ranking);
+
 
 //        List<ImatgesNovelRanking>novelRankings=new ArrayList<>();
 //        novelRankings.add(new ImatgesNovelRanking("The Tale of Genji","Murasaki Shikibu",
@@ -86,6 +90,7 @@ public class FragmentHomeNovels extends Fragment {
 
 
 
+
         recyclerView = rootView.findViewById(R.id.recycler_view_novels_recommended);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseRecyclerOptions<NovelClass> options2 = new FirebaseRecyclerOptions.Builder<NovelClass>()
@@ -93,6 +98,7 @@ public class FragmentHomeNovels extends Fragment {
         adapterRecommended = new AdapterNovelsRecommended(options2);
         adapterRecommended.setContext(getContext());
         recyclerView.setAdapter(adapterRecommended);
+
 
 
 //

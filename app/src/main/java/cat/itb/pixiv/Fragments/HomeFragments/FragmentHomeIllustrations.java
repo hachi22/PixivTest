@@ -16,9 +16,14 @@ import android.view.ViewGroup;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterIlustrationsRecomended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterMangaRecommended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterPopularLives;
+import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIM;
+import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIllustrations;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingMangas;
 import cat.itb.pixiv.ClassesModels.IllustrationClass;
@@ -50,20 +55,10 @@ public static FragmentHomeIllustrations getInstance(){
         View rootView = inflater.inflate(R.layout.fragment_home_illustrations, container, false);
         FireBaseHelper.setAllReferences();
 
-//        List<ImatgesP> imageslist = new ArrayList<>();
-//        imageslist.add(new ImatgesP("title","description","user",R.raw.img1,2,2,2,R.raw.img6,R.raw.img11));
-//        imageslist.add(new ImatgesP("title","description","user",R.raw.img2,2,2,2,R.raw.img7,R.raw.img12));
-//        imageslist.add(new ImatgesP("title","description","user",R.raw.img3,2,2,2,R.raw.img8,R.raw.img13));
-//        imageslist.add(new ImatgesP("title","description","user",R.raw.img4,2,2,2,R.raw.img9,R.raw.img14));
-//        imageslist.add(new ImatgesP("title","description","user",R.raw.img5,2,2,2,R.raw.img10,R.raw.img15));
-
-
-
-
-
 
         recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_ranking);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         FirebaseRecyclerOptions<IllustrationClass> options = new FirebaseRecyclerOptions.Builder<IllustrationClass>()
                 .setQuery(FireBaseHelper.getReferenceIllustrationsRanking(), IllustrationClass.class).build();
         adapterRankingIlus = new AdapterRankingIllustrations(options);
@@ -74,8 +69,10 @@ public static FragmentHomeIllustrations getInstance(){
 
         recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_popular_lives);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         FirebaseRecyclerOptions<IllustrationPLClass> options2 = new FirebaseRecyclerOptions.Builder<IllustrationPLClass>()
                 .setQuery(FireBaseHelper.getReferenceIllustrationsPopularLives(), IllustrationPLClass.class).build();
+
         adapterPopularLives = new AdapterPopularLives(options2);
         adapterPopularLives.setContext(getContext());
         recyclerView.setAdapter(adapterPopularLives);
@@ -85,8 +82,10 @@ public static FragmentHomeIllustrations getInstance(){
 
         recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_recommended);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+
         FirebaseRecyclerOptions<IllustrationClass> options3 = new FirebaseRecyclerOptions.Builder<IllustrationClass>()
                 .setQuery(FireBaseHelper.getReferenceIllustrationsRecommended(), IllustrationClass.class).build();
+
         adapterRecomended = new AdapterIlustrationsRecomended(options3);
         adapterRecomended.setContext(getContext());
         recyclerView.setAdapter(adapterRecomended);

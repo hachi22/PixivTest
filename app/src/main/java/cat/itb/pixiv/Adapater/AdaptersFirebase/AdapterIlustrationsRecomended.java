@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -15,7 +16,9 @@ import com.squareup.picasso.Picasso;
 
 import cat.itb.pixiv.ClassesModels.IllustrationClass;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
+import cat.itb.pixiv.Fragments.onClickImage.FragmentOCIllustrations;
 import cat.itb.pixiv.R;
+
 
 public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<IllustrationClass, AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended> {
 
@@ -37,6 +40,15 @@ public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<Illus
     protected void onBindViewHolder(@NonNull AdapterIlustrationsRecomended.ViewHolderIllustrationsRecommended holder, int position, @NonNull IllustrationClass model) {
         this.model = model;
         holder.bind();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity context=(AppCompatActivity)v.getContext();
+                FragmentOCIllustrations fragmentOCIllustrations=new FragmentOCIllustrations();
+                context.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentOCIllustrations).commit();
+            }
+        });
+
     }
 
     @NonNull
@@ -54,6 +66,8 @@ public class AdapterIlustrationsRecomended extends FirebaseRecyclerAdapter<Illus
 
             imageViewimage = itemView.findViewById(R.id.image_view_illustrations_recommended);
             imageViewLike = itemView.findViewById(R.id.image_view_illustrations_recommended_like);
+
+
 
         }
 
