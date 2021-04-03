@@ -13,6 +13,7 @@ public class NovelClass implements Parcelable {
     String novelImgUrl;
     String userImgUrl;
     boolean imgpriv;
+    private String key;
 
     public NovelClass(){}
 
@@ -140,5 +141,13 @@ public class NovelClass implements Parcelable {
 
     public void setImgpriv(boolean imgpriv) {
         this.imgpriv = imgpriv;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

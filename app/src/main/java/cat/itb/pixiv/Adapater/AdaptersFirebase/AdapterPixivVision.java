@@ -15,11 +15,12 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import cat.itb.pixiv.ClassesModels.ImatgesP;
+import cat.itb.pixiv.ClassesModels.MangaPixivVisionClass;
 import cat.itb.pixiv.R;
 
-public class AdapterPixivVision extends FirebaseRecyclerAdapter<ImatgesP, AdapterPixivVision.ViewHolderPixivVision> {
+public class AdapterPixivVision extends FirebaseRecyclerAdapter<MangaPixivVisionClass, AdapterPixivVision.ViewHolderPixivVision> {
 
-    private ImatgesP model;
+    private MangaPixivVisionClass model;
     private Context context;
 
     public Context getContext() {
@@ -29,12 +30,12 @@ public class AdapterPixivVision extends FirebaseRecyclerAdapter<ImatgesP, Adapte
         this.context = context;
     }
 
-    public AdapterPixivVision(@NonNull FirebaseRecyclerOptions<ImatgesP> options) {
+    public AdapterPixivVision(@NonNull FirebaseRecyclerOptions<MangaPixivVisionClass> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AdapterPixivVision.ViewHolderPixivVision holder, int position, @NonNull ImatgesP model) {
+    protected void onBindViewHolder(@NonNull AdapterPixivVision.ViewHolderPixivVision holder, int position, @NonNull MangaPixivVisionClass model) {
         this.model = model;
         holder.bind();
     }
@@ -58,7 +59,7 @@ public class AdapterPixivVision extends FirebaseRecyclerAdapter<ImatgesP, Adapte
         }
 
         public void bind(){
-            Picasso.with(getContext()).load(model.getImage()).into(imageView);
+            Picasso.with(getContext()).load(model.getpVImgUrl()).into(imageView);
             textViewTitle.setText(model.getTitle());
         }
 

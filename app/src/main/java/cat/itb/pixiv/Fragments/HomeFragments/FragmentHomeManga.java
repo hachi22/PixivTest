@@ -3,17 +3,27 @@ package cat.itb.pixiv.Fragments.HomeFragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterMangaRecommended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterPixivVision;
+
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIM;
+
+import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingMangas;
+import cat.itb.pixiv.ClassesModels.MangaClass;
+import cat.itb.pixiv.ClassesModels.MangaPixivVisionClass;
+import cat.itb.pixiv.FireBase.FireBaseHelper;
+
 import cat.itb.pixiv.R;
 
 public class FragmentHomeManga extends Fragment {
@@ -23,7 +33,7 @@ public class FragmentHomeManga extends Fragment {
     }
 
     RecyclerView recyclerView;
-    AdapterRankingIM adapterRanking;
+    AdapterRankingMangas adapterRanking;
     AdapterPixivVision adapterPixivVision;
     AdapterMangaRecommended adapterRecommended;
     DatabaseReference myRef;
@@ -49,40 +59,57 @@ public class FragmentHomeManga extends Fragment {
 
 
 
-//        recyclerView = rootView.findViewById(R.id.recycler_view_manga_ranking);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        FirebaseRecyclerOptions<ImatgesP> options = new FirebaseRecyclerOptions.Builder<ImatgesP>()
-//                .setQuery(FireBaseHelper.getReferenceRanking(), ImatgesP.class).build();
-//        adapterRanking = new AdapterRankingIM(options);
-//        adapterRanking.setContext(getContext());
-//        recyclerView.setAdapter(adapterRanking);
+        recyclerView = rootView.findViewById(R.id.recycler_view_manga_ranking);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseRecyclerOptions<MangaClass> options = new FirebaseRecyclerOptions.Builder<MangaClass>()
+                .setQuery(FireBaseHelper.getReferenceMangaRanking(), MangaClass.class).build();
+        adapterRanking = new AdapterRankingMangas(options);
+        adapterRanking.setContext(getContext());
+        recyclerView.setAdapter(adapterRanking);
 
 
 
-//        recyclerView = rootView.findViewById(R.id.recycler_view_manga_pixi_vision);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        FirebaseRecyclerOptions<ImatgesP> options2 = new FirebaseRecyclerOptions.Builder<ImatgesP>()
-//                .setQuery(FireBaseHelper.getReferencePixivVision(), ImatgesP.class).build();
-//        adapterPixivVision = new AdapterPixivVision(options2);
-//        adapterPixivVision.setContext(getContext());
-//        recyclerView.setAdapter(adapterPixivVision);
+        recyclerView = rootView.findViewById(R.id.recycler_view_manga_pixi_vision);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseRecyclerOptions<MangaPixivVisionClass> options2 = new FirebaseRecyclerOptions.Builder<MangaPixivVisionClass>()
+                .setQuery(FireBaseHelper.getReferenceMangaPixivVision(), MangaPixivVisionClass.class).build();
+        adapterPixivVision = new AdapterPixivVision(options2);
+        adapterPixivVision.setContext(getContext());
+        recyclerView.setAdapter(adapterPixivVision);
 
 
 
-//        recyclerView = rootView.findViewById(R.id.recycler_view_manga_mangas);
-//        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-//        FirebaseRecyclerOptions<ImatgesP> options3 = new FirebaseRecyclerOptions.Builder<ImatgesP>()
-//                .setQuery(FireBaseHelper.getReferenceRecommendedManga(), ImatgesP.class).build();
-//        adapterRecommended = new AdapterMangaRecommended(options3);
-//        adapterRecommended.setContext(getContext());
-//        recyclerView.setAdapter(adapterRecommended);
-//
+
+        recyclerView = rootView.findViewById(R.id.recycler_view_manga_mangas);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        FirebaseRecyclerOptions<MangaClass> options3 = new FirebaseRecyclerOptions.Builder<MangaClass>()
+                .setQuery(FireBaseHelper.getReferenceMangaRecommended(), MangaClass.class).build();
+        adapterRecommended = new AdapterMangaRecommended(options3);
+        adapterRecommended.setContext(getContext());
+        recyclerView.setAdapter(adapterRecommended);
+
 //        recyclerView = rootView.findViewById(R.id.recycler_view_manga_mangas);
 //        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 //        nAdaptersMangaRecommended = new NAdaptersMangaRecommended(mangaRecommendeds);
 //        recyclerView.setAdapter(nAdaptersMangaRecommended);
-//
+
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterRanking.startListening();
+        adapterRecommended.startListening();
+        adapterPixivVision.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapterRanking.stopListening();
+        adapterRecommended.stopListening();
+        adapterPixivVision.stopListening();
     }
 
 

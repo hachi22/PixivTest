@@ -20,9 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterIlustrationsRecomended;
+import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterMangaRecommended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterPopularLives;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIM;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
+import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIllustrations;
+import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingMangas;
+import cat.itb.pixiv.ClassesModels.IllustrationClass;
+import cat.itb.pixiv.ClassesModels.IllustrationPLClass;
 import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.R;
 
@@ -34,7 +39,7 @@ public static FragmentHomeIllustrations getInstance(){
 }
 
     RecyclerView recyclerView;
-    AdapterRankingIM adapterRanking;
+    AdapterRankingIllustrations adapterRankingIlus;
     AdapterIlustrationsRecomended adapterRecomended;
     AdapterPopularLives adapterPopularLives;
 
@@ -48,23 +53,26 @@ public static FragmentHomeIllustrations getInstance(){
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home_illustrations, container, false);
-        FireBaseHelper.obtenerReferencia();
+        FireBaseHelper.setAllReferences();
 
 
         recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_ranking);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        FirebaseRecyclerOptions<ImatgesP> options = new FirebaseRecyclerOptions.Builder<ImatgesP>()
-                .setQuery(FireBaseHelper.getReferenceRanking(), ImatgesP.class).build();
-        adapterRanking = new AdapterRankingIM(options);
-        adapterRanking.setContext(getContext());
-        recyclerView.setAdapter(adapterRanking);
+
+        FirebaseRecyclerOptions<IllustrationClass> options = new FirebaseRecyclerOptions.Builder<IllustrationClass>()
+                .setQuery(FireBaseHelper.getReferenceIllustrationsRanking(), IllustrationClass.class).build();
+        adapterRankingIlus = new AdapterRankingIllustrations(options);
+        adapterRankingIlus.setContext(getContext());
+        recyclerView.setAdapter(adapterRankingIlus);
 
 
 
         recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_popular_lives);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        FirebaseRecyclerOptions<ImatgesP> options2 = new FirebaseRecyclerOptions.Builder<ImatgesP>()
-                .setQuery(FireBaseHelper.getReferencePopularLives(), ImatgesP.class).build();
+
+        FirebaseRecyclerOptions<IllustrationPLClass> options2 = new FirebaseRecyclerOptions.Builder<IllustrationPLClass>()
+                .setQuery(FireBaseHelper.getReferenceIllustrationsPopularLives(), IllustrationPLClass.class).build();
+
         adapterPopularLives = new AdapterPopularLives(options2);
         adapterPopularLives.setContext(getContext());
         recyclerView.setAdapter(adapterPopularLives);
@@ -74,8 +82,10 @@ public static FragmentHomeIllustrations getInstance(){
 
         recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_recommended);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        FirebaseRecyclerOptions<ImatgesP> options3 = new FirebaseRecyclerOptions.Builder<ImatgesP>()
-                .setQuery(FireBaseHelper.getReferenceRecommendedIllustrations(), ImatgesP.class).build();
+
+        FirebaseRecyclerOptions<IllustrationClass> options3 = new FirebaseRecyclerOptions.Builder<IllustrationClass>()
+                .setQuery(FireBaseHelper.getReferenceIllustrationsRecommended(), IllustrationClass.class).build();
+
         adapterRecomended = new AdapterIlustrationsRecomended(options3);
         adapterRecomended.setContext(getContext());
         recyclerView.setAdapter(adapterRecomended);
@@ -86,6 +96,22 @@ public static FragmentHomeIllustrations getInstance(){
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterRecomended.startListening();
+        adapterPopularLives.startListening();
+        adapterRankingIlus.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapterRecomended.stopListening();
+        adapterPopularLives.stopListening();
+        adapterRankingIlus.stopListening();
     }
   }
 
