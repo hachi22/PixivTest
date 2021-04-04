@@ -17,7 +17,6 @@ import com.google.firebase.database.DatabaseReference;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterMangaRecommended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterPixivVision;
 
-import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIM;
 
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingMangas;
 import cat.itb.pixiv.ClassesModels.MangaClass;

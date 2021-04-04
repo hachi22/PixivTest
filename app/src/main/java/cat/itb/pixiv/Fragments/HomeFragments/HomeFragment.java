@@ -27,6 +27,7 @@ import cat.itb.pixiv.BlankFragment;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
+import cat.itb.pixiv.Fragments.NavigationDrawerFragments.YourWorksFragment;
 import cat.itb.pixiv.R;
 
 public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
@@ -96,7 +97,7 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
                 break;
                 case R.id.yourWorks:
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new YourWorksFragment()).commit();
                 break;
             case R.id.collection:
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();

@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import cat.itb.pixiv.Fragments.HomeFragments.HomeFragment;
-import cat.itb.pixiv.LoginFragments.FragmentRegister;
 import cat.itb.pixiv.R;
 
 public class FragmentSubmitNovels extends Fragment {
