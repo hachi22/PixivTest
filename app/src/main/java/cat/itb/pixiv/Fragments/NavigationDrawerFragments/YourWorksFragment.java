@@ -25,6 +25,9 @@ import cat.itb.pixiv.ClassesModels.NovelClass;
 import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.Fragments.HomeFragment;
 import cat.itb.pixiv.R;
+import cat.itb.pixiv.SubmitWorkFragments.FragmentSubmitIllustrations;
+import cat.itb.pixiv.SubmitWorkFragments.FragmentSubmitManga;
+import cat.itb.pixiv.SubmitWorkFragments.FragmentSubmitNovels;
 
 public class YourWorksFragment extends Fragment {
 
@@ -118,13 +121,13 @@ public class YourWorksFragment extends Fragment {
             public void onClick(View v) {
                 switch (submitWorkSegunRecycler){
                     case 1:
-//                        cambiarFragmentSumbitWork();
+                        cambiarFragmentSumbitWork(new FragmentSubmitIllustrations());
                         break;
                     case 2:
-//                        cambiarFragmentSumbitWork();
+                        cambiarFragmentSumbitWork(new FragmentSubmitManga());
                         break;
                     case 3:
-//                        cambiarFragmentSumbitWork();
+                        cambiarFragmentSumbitWork(new FragmentSubmitNovels());
                         break;
                 }
             }

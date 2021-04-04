@@ -22,7 +22,6 @@ import java.util.List;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterIlustrationsRecomended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterMangaRecommended;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterPopularLives;
-import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIM;
 import cat.itb.pixiv.ClassesModels.ImatgesP;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIllustrations;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingMangas;
