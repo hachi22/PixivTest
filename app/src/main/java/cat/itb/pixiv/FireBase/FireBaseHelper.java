@@ -219,6 +219,11 @@ public class FireBaseHelper {
         novel.setKey(keyI);
         ref.child(keyI).setValue(novel);
     }
+
+    public static void actulizarWorksViewsLike(String keyUser, String workPackage, String id, String attribute){
+        DatabaseReference ref = referenceUsers.child(keyUser).child("MyWork").child(workPackage).child(id).child(attribute).getRef();
+        ref.setValue(Integer.parseInt(ref.toString())+1);
+    }
     //endregion
 
     //region ELIMINAR YOUR WORKS
