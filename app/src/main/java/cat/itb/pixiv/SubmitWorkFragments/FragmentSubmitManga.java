@@ -15,13 +15,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import cat.itb.pixiv.Fragments.HomeFragments.HomeFragment;
 import cat.itb.pixiv.R;
 
 public class FragmentSubmitManga extends Fragment {
 
     Button submit;
-    //Toolbar toolbar;
+    MaterialToolbar toolbar;
 
 
     @Nullable
@@ -30,7 +32,7 @@ public class FragmentSubmitManga extends Fragment {
         View v = inflater.inflate(R.layout.submit_work_illustrations_manga, container, false);
 
         submit = v.findViewById(R.id.submitIllustrationManga);
-        //toolbar = v.findViewById(R.id.toolbar_sumitwork_illustrations);
+        toolbar = v.findViewById(R.id.toolbar_sumitwork_illustrations);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,17 +42,13 @@ public class FragmentSubmitManga extends Fragment {
                 transaction.replace(R.id.fragment_container, new HomeFragment()).commit();
             }
         });
-        /*
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
-            }
-        });
-        *
-         */
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new cat.itb.pixiv.Fragments.HomeFragment()).commit();
+            }});
 
         return v;
     }
