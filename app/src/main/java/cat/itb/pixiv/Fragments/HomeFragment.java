@@ -117,6 +117,7 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
                 FragmentLogin fragmentLogin = new FragmentLogin();
                 fragmentLogin.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentLogin).commit();
+                break;
             case R.id.collection:
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
                 break;
