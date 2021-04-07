@@ -151,7 +151,7 @@
 
 
         </RelativeLayout>
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar_sumitwork_illustrations"
             android:minHeight="?attr/actionBarSize"
             android:background="@color/colorPrimaryDark"
@@ -160,14 +160,6 @@
             app:title="SubmitWork"
             />
 
-        <!--        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);-->
-        <!--        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);-->
-        <!--        toolbar.setNavigationOnClickListener(new View.OnClickListener() {-->
-        <!--        @Override-->
-        <!--        public void onClick(View v) {-->
-        <!--        getActivity().onBackPressed();-->
-        <!--        }-->
-        <!--        });-->
     </RelativeLayout>
 
 </ScrollView>
