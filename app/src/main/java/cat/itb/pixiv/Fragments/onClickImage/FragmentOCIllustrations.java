@@ -14,10 +14,6 @@ import cat.itb.pixiv.R;
 
 public class FragmentOCIllustrations extends Fragment {
 
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

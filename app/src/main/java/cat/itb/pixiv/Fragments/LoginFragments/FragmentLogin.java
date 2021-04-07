@@ -1,5 +1,7 @@
 package cat.itb.pixiv.Fragments.LoginFragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -32,7 +34,7 @@ public class FragmentLogin extends Fragment {
     Button login;
     Button register;
     FireBaseHelper fireBaseHelper;
-
+    SharedPreferences.Editor editor;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +52,13 @@ public class FragmentLogin extends Fragment {
         passwordInput = v.findViewById(R.id.input_layout_login_password);
         passwordEditText = v.findViewById(R.id.input_text_login_password);
         login = v.findViewById(R.id.loginButton);
+
+
+        if(getArguments()!=null && getArguments().getInt("id")==1){
+            hacerlogout();
+        }
+        cargarPreferences();
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +79,9 @@ public class FragmentLogin extends Fragment {
                         handler.postDelayed(new Runnable() {
                             public void run() {
                                 if(comprobarPasUser()){
+
+                                    guardarPreferencias();
+
                                     passwordInput.setError("");
                                     FragmentManager manager = getFragmentManager();
                                     FragmentTransaction transaction = manager.beginTransaction();
@@ -82,13 +94,16 @@ public class FragmentLogin extends Fragment {
                 }
             }
         });
+
         register = v.findViewById(R.id.registerButton);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.fragment_container, new FragmentRegister()).commit();
+    //                FragmentManager manager = getFragmentManager();
+    //                FragmentTransaction transaction = manager.beginTransaction();
+    //                transaction.replace(R.id.fragment_container, new FragmentRegister()).commit();
+
+                hacerlogout();
             }
         });
         return v;
@@ -106,5 +121,41 @@ public class FragmentLogin extends Fragment {
         }else loginInput.setError("Wrong user name");
 
         return false;
+    }
+
+    private void guardarPreferencias(){
+        Context context = getContext();
+        SharedPreferences preferences  =  context.getSharedPreferences("credencials", Context.MODE_PRIVATE);
+        String user = loginEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        editor = preferences.edit();
+        editor.putString("user",user);
+        editor.putString("password", password);
+
+        loginEditText.setText(user);
+        passwordEditText.setText(password);
+
+        editor.apply();
+        editor.commit();
+    }
+
+    private void cargarPreferences(){
+        Context context = getContext();
+        SharedPreferences preferences  =  context.getSharedPreferences("credencials", Context.MODE_PRIVATE);
+
+        String user = preferences.getString("user","");
+        String password = preferences.getString("password","");
+
+        loginEditText.setText(user);
+        passwordEditText.setText(password);
+    }
+
+    public void hacerlogout(){
+        Context context = getContext();
+        SharedPreferences preferences  =  context.getSharedPreferences("credencials", Context.MODE_PRIVATE);
+        editor = preferences.edit();
+        editor.clear();
+        editor.commit();
     }
 }

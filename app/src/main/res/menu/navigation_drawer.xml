@@ -74,6 +74,12 @@
             android:title="My pixiv"
             />
 
+        <item
+            android:id="@+id/logout"
+            android:title="Log Out"
+            />
+
+
     </group>
         </menu>
 
