@@ -26,6 +26,7 @@ import cat.itb.pixiv.BlankFragment;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
+import cat.itb.pixiv.Fragments.LoginFragments.FragmentLogin;
 import cat.itb.pixiv.Fragments.NavigationDrawerFragments.YourWorksFragment;
 import cat.itb.pixiv.R;
 import cat.itb.pixiv.SubmitWorkFragments.BottomSheet;
@@ -110,6 +111,12 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
             case R.id.yourWorks:
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new YourWorksFragment()).commit();
                 break;
+            case R.id.logout:
+                Bundle bundle = new Bundle();
+                bundle.putInt("id",1);
+                FragmentLogin fragmentLogin = new FragmentLogin();
+                fragmentLogin.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentLogin).commit();
             case R.id.collection:
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
                 break;
