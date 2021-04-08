@@ -2,9 +2,11 @@ package cat.itb.pixiv.FireBase;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -31,6 +33,8 @@ import cat.itb.pixiv.ClassesModels.MangaClass;
 import cat.itb.pixiv.ClassesModels.NovelClass;
 import cat.itb.pixiv.ClassesModels.User;
 import id.zelory.compressor.Compressor;
+
+import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 public class FireBaseHelper {
 
@@ -306,7 +310,8 @@ public class FireBaseHelper {
             urlImage =  downloadUri.toString();
         });
 
-    }
+
+   }
     //endregion
 
 
