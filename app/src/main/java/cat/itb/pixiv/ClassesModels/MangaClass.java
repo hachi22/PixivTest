@@ -26,7 +26,7 @@ public class MangaClass implements Parcelable {
 
     }
 
-    public MangaClass(String idManga, String title, String description, int likesNumber, String userName, String mangaImgUrl, String userImgUrl, boolean imgpriv) {
+    public MangaClass(String idManga, String title, String description, int likesNumber, String userName, String mangaImgUrl, String userImgUrl) {
         this.idManga = idManga;
         this.title = title;
         this.description = description;
@@ -34,7 +34,6 @@ public class MangaClass implements Parcelable {
         this.userName = userName;
         this.mangaImgUrl = mangaImgUrl;
         this.userImgUrl = userImgUrl;
-        this.imgpriv = imgpriv;
     }
 
     protected MangaClass(Parcel in) {

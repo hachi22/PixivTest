@@ -57,7 +57,11 @@ public class FireBaseHelper {
     private static DatabaseReference referenceImage;
 
     private static DatabaseReference referenceImageUser;
-    private static String defaultImage = "";
+    private static String defaultUserImage = "";
+
+    public static String getDefaultUserImage() {
+        return defaultUserImage;
+    }
 
     private static StorageReference storageImageReference;
 
@@ -160,7 +164,7 @@ public class FireBaseHelper {
     public static void subirNuevoUser(String userName, String password){
         String key = referenceUsers.push().getKey();
         keyU = key;
-        referenceUsers.child(key).setValue(new User(userName, password,key, defaultImage));
+        referenceUsers.child(key).setValue(new User(userName, password,key, defaultUserImage));
     }
 
     public static void subirImagenPerfil(String url){
@@ -205,20 +209,20 @@ public class FireBaseHelper {
 //endregion
 
     //region SUBIR YOUR WORKS
-    public static void subirMyWork(IllustrationClass illus, String myWorkPackage){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
+    public static void subirMyWork(IllustrationClass illus){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child("Illustration").getRef();
         String keyI = ref.push().getKey();
         illus.setKey(keyI);
         ref.child(keyI).setValue(illus);
     }
-    public static void subirMyWork(MangaClass manga, String myWorkPackage){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
+    public static void subirMyWork(MangaClass manga){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child("Manga").getRef();
         String keyI = ref.push().getKey();
         manga.setKey(keyI);
         ref.child(keyI).setValue(manga);
     }
-    public static void subirMyWork(NovelClass novel, String myWorkPackage){
-        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
+    public static void subirMyWork(NovelClass novel){
+        DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child("Novels").getRef();
         String keyI = ref.push().getKey();
         novel.setKey(keyI);
         ref.child(keyI).setValue(novel);
@@ -266,8 +270,9 @@ public class FireBaseHelper {
 
     //region MANEJO_DE_IMAGEN
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void comprimirImatge(Bitmap thumb_bitmap, Context context, File url, DatabaseReference imageReference){
+    public void comprimirImatge(Context context, File url, DatabaseReference imageReference){
         byte [] thumb_byte;
+        Bitmap thumb_bitmap = null;
         try {
             thumb_bitmap = new Compressor(context)
                     .setMaxHeight(125)
@@ -366,10 +371,6 @@ public class FireBaseHelper {
 
     public static DatabaseReference getReferenceImageUser() {
         return referenceImageUser;
-    }
-
-    public static String getDefaultImage() {
-        return defaultImage;
     }
 
     public static StorageReference getStorageImageReference() {

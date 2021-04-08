@@ -8,9 +8,11 @@ public class IllustrationClass implements Parcelable {
     String title;
     String IllustrationImgUrl;
     String userName;
+    String description;
     String userImgUrl;
     boolean imgpriv;
     private String key;
+
 
     public String getKey() {
         return key;
@@ -22,19 +24,28 @@ public class IllustrationClass implements Parcelable {
 
     public IllustrationClass(){}
 
-    public IllustrationClass(String idIllustration, String title, String illustrationImgUrl, String userName, String userImgUrl, boolean imgpriv) {
-        this.idIllustration = idIllustration;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public IllustrationClass(String title, String description, String illustrationImgUrl, String userName, String userImgUrl) {
         this.title = title;
+        this.description = description;
         IllustrationImgUrl = illustrationImgUrl;
         this.userName = userName;
         this.userImgUrl = userImgUrl;
-        this.imgpriv = imgpriv;
+
     }
 
 
     protected IllustrationClass(Parcel in) {
         idIllustration = in.readString();
         title = in.readString();
+        description = in.readString();
         IllustrationImgUrl = in.readString();
         userName = in.readString();
         userImgUrl = in.readString();
@@ -45,6 +56,7 @@ public class IllustrationClass implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(idIllustration);
         dest.writeString(title);
+        dest.writeString(description);
         dest.writeString(IllustrationImgUrl);
         dest.writeString(userName);
         dest.writeString(userImgUrl);

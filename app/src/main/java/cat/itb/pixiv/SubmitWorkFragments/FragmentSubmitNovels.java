@@ -54,7 +54,7 @@ public class FragmentSubmitNovels extends Fragment {
             @Override
             public void onClick(View v) {
 
-                fireBaseHelper.subirMyWork(novelClass, bundle());
+                //fireBaseHelper.subirMyWork(novelClass());
 
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
