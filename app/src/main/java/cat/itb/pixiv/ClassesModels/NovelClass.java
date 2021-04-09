@@ -26,16 +26,14 @@ public class NovelClass implements Parcelable {
         this.content = content;
     }
 
-    public NovelClass(int charactersNumbers, String title, String description, String content, String  username, int likesNumber, String novelImgUrl, String userImgUrl, boolean imgpriv) {
+    public NovelClass(int charactersNumbers, String title, String description, String content, String  username, String novelImgUrl, String userImgUrl) {
         this.charactersNumbers = charactersNumbers;
         this.title = title;
         this.description = description;
         this.content = content;
         this.username = username;
-        this.likesNumber = likesNumber;
         this.novelImgUrl = novelImgUrl;
         this.userImgUrl = userImgUrl;
-        this.imgpriv = imgpriv;
     }
 
     protected NovelClass(Parcel in) {

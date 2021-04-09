@@ -50,6 +50,7 @@ public class FragmentSubmitIllustrations extends Fragment {
     TextInputEditText title;
     TextInputEditText description;
     RadioGroup radioGroup;
+    public int pubpriv;
 
 
     @Nullable
@@ -65,6 +66,19 @@ public class FragmentSubmitIllustrations extends Fragment {
         title = v.findViewById(R.id.edit_text_title_submit_illustration);
         description = v.findViewById(R.id.edit_description_title_submit_illustration);
         radioGroup = v.findViewById(R.id.group_radio_button_submit_illustrations);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.radio_button_public_novels){
+
+                    pubpriv = 0;
+                }else{
+
+                }
+                pubpriv = 1;
+            }
+        });
 
         editImage.setOnClickListener(new View.OnClickListener() {
 
@@ -112,13 +126,9 @@ public class FragmentSubmitIllustrations extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println(CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE);
-        System.out.println(requestCode);
         if(requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && requestCode == RESULT_OK){
             Uri imageUri = CropImage.getPickImageResultUri(getContext(),data);
             recortarImagen(imageUri);
-
-            System.out.println("1");
 
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -128,17 +138,13 @@ public class FragmentSubmitIllustrations extends Fragment {
             url = new File(resultUri.getPath());
             Picasso.with(getContext()).load(url).into(imgRef);
 
-            System.out.println("2");
-
         }
         if(requestCode == REQUEST_IMAGE_CAPTURE){
             Uri imageUri = CropImage.getPickImageResultUri(getContext(),data);
             recortarImagen(imageUri);
 
-            System.out.println("3");
         }
 
-        System.out.println("fuera");
     }
 
     public void recortarImagen(Uri imageUri){
@@ -147,9 +153,4 @@ public class FragmentSubmitIllustrations extends Fragment {
                 .start(getContext(),FragmentSubmitIllustrations.this);
     }
 
-    private String bundle(){
-        String key = (title.getText().toString() + description.getText().toString() + url);
-
-        return key;
-    }
 }

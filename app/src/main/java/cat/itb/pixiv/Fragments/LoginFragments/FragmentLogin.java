@@ -156,6 +156,6 @@ public class FragmentLogin extends Fragment {
         SharedPreferences preferences  =  context.getSharedPreferences("credencials", Context.MODE_PRIVATE);
         editor = preferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 }

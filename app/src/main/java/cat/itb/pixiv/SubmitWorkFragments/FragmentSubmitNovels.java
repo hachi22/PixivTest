@@ -35,7 +35,7 @@ public class FragmentSubmitNovels extends Fragment {
     TextInputEditText description;
     TextInputEditText content;
     RadioGroup radioGroup;
-    NovelClass novelClass;
+    public int pubpriv;
 
     @Nullable
     @Override
@@ -49,12 +49,25 @@ public class FragmentSubmitNovels extends Fragment {
         content = v.findViewById(R.id.edit_text_content_submit_novel);
         radioGroup = v.findViewById(R.id.group_radio_button_submit_novels);
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.radio_button_public_novels){
+
+                    pubpriv = 0;
+                }else{
+
+                }
+                pubpriv = 1;
+            }
+        });
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //fireBaseHelper.subirMyWork(novelClass());
+                fireBaseHelper.subirMyWork(new NovelClass( 1, title.getText().toString(), description.getText().toString(), content.getText().toString(), "Miquel",  FireBaseHelper.getUrlImage(), FireBaseHelper.getDefaultUserImage()));
 
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -77,10 +90,5 @@ public class FragmentSubmitNovels extends Fragment {
         return v;
     }
 
-    private String bundle(){
-        String key = (title.getText().toString() + description.getText().toString() + content.getText().toString());
-
-        return key;
-    }
 }
 
