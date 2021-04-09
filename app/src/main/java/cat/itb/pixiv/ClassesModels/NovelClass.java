@@ -9,6 +9,7 @@ public class NovelClass implements Parcelable {
     String title;
     String description;
     String username;
+    String content;
     int likesNumber;
     String novelImgUrl;
     String userImgUrl;
@@ -17,16 +18,22 @@ public class NovelClass implements Parcelable {
 
     public NovelClass(){}
 
-    public NovelClass(String novelId, int charactersNumbers, String title, String description, String username, int likesNumber, String novelImgUrl, String userImgUrl, boolean imgpriv) {
-        this.novelId = novelId;
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public NovelClass(int charactersNumbers, String title, String description, String content, String  username, String novelImgUrl, String userImgUrl) {
         this.charactersNumbers = charactersNumbers;
         this.title = title;
         this.description = description;
+        this.content = content;
         this.username = username;
-        this.likesNumber = likesNumber;
         this.novelImgUrl = novelImgUrl;
         this.userImgUrl = userImgUrl;
-        this.imgpriv = imgpriv;
     }
 
     protected NovelClass(Parcel in) {
@@ -34,6 +41,7 @@ public class NovelClass implements Parcelable {
         charactersNumbers = in.readInt();
         title = in.readString();
         description = in.readString();
+        content = in.readString();
         username = in.readString();
         likesNumber = in.readInt();
         novelImgUrl = in.readString();
@@ -64,6 +72,7 @@ public class NovelClass implements Parcelable {
         dest.writeInt(charactersNumbers);
         dest.writeString(title);
         dest.writeString(description);
+        dest.writeString(content);
         dest.writeString(username);
         dest.writeInt(likesNumber);
         dest.writeString(novelImgUrl);
