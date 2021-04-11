@@ -1,4 +1,4 @@
-package cat.itb.pixiv.SubmitWorkFragments;
+package cat.itb.pixiv.Fragments.SubmitWorkFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
-import cat.itb.pixiv.BlankFragment;
 import cat.itb.pixiv.R;
 
 public class BottomSheet extends BottomSheetDialogFragment {
