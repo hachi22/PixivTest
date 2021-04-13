@@ -66,12 +66,15 @@ public class FollowersFragment extends Fragment {
             }
         });
 
+        /*
         followButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO: seguir al usuario
             }
         });
+        */
+
 
         return rootView;
 
