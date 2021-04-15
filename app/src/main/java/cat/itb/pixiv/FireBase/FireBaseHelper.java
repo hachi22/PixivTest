@@ -43,7 +43,6 @@ import id.zelory.compressor.Compressor;
 
 import static android.content.ContentValues.TAG;
 import static androidx.core.app.ActivityCompat.startActivityForResult;
-import static cat.itb.pixiv.FireBase.FireBaseHelper.pujarImatge;
 
 public class FireBaseHelper {
 
@@ -376,7 +375,7 @@ public class FireBaseHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void pujarImatge(byte[] thumb_byte, DatabaseReference imageReference){
+    public static void pujarImatge(byte[] thumb_byte, DatabaseReference imageReference){
         final String[] nombreImagen = {""};
 
 
@@ -415,7 +414,7 @@ public class FireBaseHelper {
             return ref.getDownloadUrl();
         }).addOnCompleteListener(task -> {
             Uri downloadUri = task.getResult();
-            imageReference.push().child("urlfoto").setValue(downloadUri.toString());
+            //imageReference.push().child("urlfoto").setValue(downloadUri.toString());
             System.out.println("Todo OK pujada feta");
             urlImage =  downloadUri.toString();
         });

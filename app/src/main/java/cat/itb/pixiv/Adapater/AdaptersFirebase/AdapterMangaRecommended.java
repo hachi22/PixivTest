@@ -77,7 +77,7 @@ public class AdapterMangaRecommended extends FirebaseRecyclerAdapter<MangaClass,
 
             textViewTitle.setText(model.getTitle());
             textViewDescription.setText(model.getDescription());
-            textViewNumlikes.setText(model.getLikesNumber());
+            textViewNumlikes.setText(Integer.toString(model.getLikesNumber()));
         }
     }
 }
