@@ -94,7 +94,7 @@ public class FragmentSubmitIllustrations extends Fragment {
             @Override
             public void onClick(View v) {
 
-                FireBaseHelper.subirMyWork(new IllustrationClass( title.getText().toString(), description.getText().toString(), FireBaseHelper.getUrlImage(), "Miquel", FireBaseHelper.getDefaultUserImage()));
+                FireBaseHelper.subirMyWork(new IllustrationClass( title.getText().toString(), description.getText().toString(), FireBaseHelper.getUrlImage(), FireBaseHelper.getThisUser().getUsername(), FireBaseHelper.getDefaultUserImage()));
 
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -132,6 +132,7 @@ public class FragmentSubmitIllustrations extends Fragment {
             url = new File(resultUri.getPath());
             Picasso.with(getContext()).load(url).into(imgRef);
 
+            FireBaseHelper.comprimirImatge(getContext(), url);
         }
         if(requestCode == REQUEST_IMAGE_CAPTURE){
             Uri imageUri = CropImage.getPickImageResultUri(getContext(),data);
