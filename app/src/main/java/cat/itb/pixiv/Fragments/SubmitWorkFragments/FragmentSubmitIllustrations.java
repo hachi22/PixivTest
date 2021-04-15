@@ -2,6 +2,7 @@ package cat.itb.pixiv.Fragments.SubmitWorkFragments;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -94,7 +96,7 @@ public class FragmentSubmitIllustrations extends Fragment {
             @Override
             public void onClick(View v) {
 
-                FireBaseHelper.subirMyWork(new IllustrationClass( title.getText().toString(), description.getText().toString(), FireBaseHelper.getUrlImage(), FireBaseHelper.getThisUser().getUsername(), FireBaseHelper.getDefaultUserImage()));
+                FireBaseHelper.subirMyWork(new IllustrationClass( title.getText().toString(), description.getText().toString(), FireBaseHelper.getUrlImage(), "Miquel", FireBaseHelper.getDefaultUserImage()));
 
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -117,6 +119,7 @@ public class FragmentSubmitIllustrations extends Fragment {
         return v;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

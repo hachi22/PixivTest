@@ -271,7 +271,7 @@ public class FireBaseHelper {
 
     //region MANEJO_DE_IMAGEN
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void comprimirImatge(Context context, File url, DatabaseReference imageReference){
+    public static void comprimirImatge(Context context, File url){
         byte [] thumb_byte;
         Bitmap thumb_bitmap = null;
         try {
@@ -286,11 +286,11 @@ public class FireBaseHelper {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         thumb_bitmap.compress(Bitmap.CompressFormat.JPEG, 90,byteArrayOutputStream);
         thumb_byte = byteArrayOutputStream.toByteArray();
-        pujarImatge(thumb_byte, imageReference);
+        pujarImatge(thumb_byte);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void pujarImatge(byte[] thumb_byte, DatabaseReference imageReference){
+    public static void pujarImatge(byte[] thumb_byte){
         final String[] nombreImagen = {""};
 
         @SuppressLint("SimpleDateFormat")
@@ -311,7 +311,7 @@ public class FireBaseHelper {
             return ref.getDownloadUrl();
         }).addOnCompleteListener(task -> {
             Uri downloadUri = task.getResult();
-            imageReference.push().child("urlfoto").setValue(downloadUri.toString());
+            //imageReference.push().child("urlfoto").setValue(downloadUri.toString());
             System.out.println("Todo OK pujada feta");
             urlImage =  downloadUri.toString();
         });
