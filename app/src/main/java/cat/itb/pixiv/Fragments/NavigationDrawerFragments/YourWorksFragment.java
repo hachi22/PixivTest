@@ -16,7 +16,6 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
-import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterRankingIllustrations;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterYourWorksIllustrations;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterYourWorksManga;
 import cat.itb.pixiv.Adapater.AdaptersFirebase.AdapterYourWorksNovels;
@@ -26,9 +25,9 @@ import cat.itb.pixiv.ClassesModels.NovelClass;
 import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.Fragments.HomeFragment;
 import cat.itb.pixiv.R;
-import cat.itb.pixiv.SubmitWorkFragments.FragmentSubmitIllustrations;
-import cat.itb.pixiv.SubmitWorkFragments.FragmentSubmitManga;
-import cat.itb.pixiv.SubmitWorkFragments.FragmentSubmitNovels;
+import cat.itb.pixiv.Fragments.SubmitWorkFragments.FragmentSubmitIllustrations;
+import cat.itb.pixiv.Fragments.SubmitWorkFragments.FragmentSubmitManga;
+import cat.itb.pixiv.Fragments.SubmitWorkFragments.FragmentSubmitNovels;
 
 public class YourWorksFragment extends Fragment {
 

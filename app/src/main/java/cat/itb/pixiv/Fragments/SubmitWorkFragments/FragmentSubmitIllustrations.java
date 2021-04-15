@@ -1,7 +1,6 @@
-package cat.itb.pixiv.SubmitWorkFragments;
+package cat.itb.pixiv.Fragments.SubmitWorkFragments;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,10 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,8 +30,6 @@ import cat.itb.pixiv.ClassesModels.IllustrationClass;
 import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.Fragments.HomeFragments.HomeFragment;
 import cat.itb.pixiv.R;
-
-import static android.app.Activity.RESULT_OK;
 
 public class FragmentSubmitIllustrations extends Fragment {
 
