@@ -53,7 +53,7 @@ public class FollowingFragment extends Fragment {
         imageView3 = rootView.findViewById(R.id.img_following_3);
 
         //imageView1.setImageResource();
-        // imageView2.setImageResource(); TODO: poner las imagenes del user al que sigues
+        //imageView2.setImageResource(); TODO: poner las imagenes del user al que sigues
         //imageView3.setImageResource();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
