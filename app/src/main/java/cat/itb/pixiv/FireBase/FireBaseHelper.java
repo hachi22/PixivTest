@@ -71,6 +71,7 @@ public class FireBaseHelper {
     private static DatabaseReference userMyWorksIllustrations;
     private static DatabaseReference userMyWorksManga;
     private static DatabaseReference userMyWorksNovels;
+    private static DatabaseReference userFollower;
 
     private static DatabaseReference userMyWorksPublicIllustrations;
     private static DatabaseReference userMyWorksPublicManga;
@@ -379,6 +380,10 @@ public class FireBaseHelper {
 
     public static DatabaseReference getUserMyWorksIllustrations() {
         return userMyWorksIllustrations;
+    }
+
+    public static DatabaseReference getUserFollower() {
+        return userFollower;
     }
 
     public static DatabaseReference getUserMyWorksManga() {

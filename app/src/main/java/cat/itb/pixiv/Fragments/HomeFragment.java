@@ -9,12 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -23,6 +19,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import cat.itb.pixiv.Adapater.SlideViewAdapter;
 import cat.itb.pixiv.BlankFragment;
+import cat.itb.pixiv.Fragments.FollowFragments.FollowersFragment;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeIllustrations;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeManga;
 import cat.itb.pixiv.Fragments.HomeFragments.FragmentHomeNovels;
@@ -131,7 +128,7 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
                 break;
             case R.id.followers:
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new FollowersFragment()).commit();
                 break;
             case R.id.myPixiv:
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlankFragment()).commit();
