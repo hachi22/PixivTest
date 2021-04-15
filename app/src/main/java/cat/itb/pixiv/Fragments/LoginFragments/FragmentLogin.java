@@ -59,6 +59,8 @@ public class FragmentLogin extends Fragment {
         }
         cargarPreferences();
 
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

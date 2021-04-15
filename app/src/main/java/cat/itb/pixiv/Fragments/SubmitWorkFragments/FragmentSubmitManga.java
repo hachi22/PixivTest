@@ -65,7 +65,7 @@ public class FragmentSubmitManga extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId == R.id.radio_button_public_illustrations){
 
-                    pubpriv = 0;
+                   pubpriv = 0;
                 }else{
 
                 }

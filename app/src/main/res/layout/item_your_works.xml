@@ -18,7 +18,7 @@
         android:text="Title"
         android:layout_toRightOf="@+id/image_your_works"
         android:layout_marginLeft="30dp"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         />
@@ -43,7 +43,7 @@
         android:layout_below="@+id/text_your_works_title"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
-        android:textSize="20sp"
+        android:textSize="17sp"
         />
 
 
@@ -67,7 +67,7 @@
         android:layout_below="@+id/text_your_works_title"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
-        android:textSize="20sp"
+        android:textSize="17sp"
         />
 
     <ImageView
@@ -90,7 +90,7 @@
         android:layout_below="@+id/text_your_works_title"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
-        android:textSize="20sp"
+        android:textSize="17sp"
         />
 
 </RelativeLayout>

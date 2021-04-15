@@ -64,13 +64,20 @@ public class YourWorksFragment extends Fragment {
         tabs.addTab(tabs.newTab().setText("Manga"));
         tabs.addTab(tabs.newTab().setText("Novels"));
 
+        System.out.println(FireBaseHelper.getUserMyWorksIllustrations());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseRecyclerOptions<IllustrationClass> options = new FirebaseRecyclerOptions.Builder<IllustrationClass>()
-                .setQuery(FireBaseHelper.getUserMyWorksIllustrations(), IllustrationClass.class).build();
+                .setQuery(FireBaseHelper.getReferenceIllustrationsRecommended(), IllustrationClass.class).build();
+        System.out.println(options);
         adapterYourWorksIllustrations = new AdapterYourWorksIllustrations(options);
+        System.out.println(adapterYourWorksIllustrations);
         adapterYourWorksIllustrations.setContext(getContext());
         recyclerView.setAdapter(adapterYourWorksIllustrations);
+
         submitWorkSegunRecycler =1;
+
+        System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee22222222222222222222222222222222222222222");
 
         tabs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,4 +146,27 @@ public class YourWorksFragment extends Fragment {
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        recyclerView.setAdapter(adapterYourWorksIllustrations);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapterYourWorksIllustrations.startListening();
+        adapterYourWorksManga.startListening();
+        adapterYourWorksNovels.startListening();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapterYourWorksIllustrations.stopListening();
+        adapterYourWorksManga.stopListening();
+        adapterYourWorksNovels.stopListening();
+
+    }
 }
