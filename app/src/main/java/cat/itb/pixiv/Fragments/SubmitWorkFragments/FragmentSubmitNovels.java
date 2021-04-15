@@ -1,12 +1,10 @@
-package cat.itb.pixiv.SubmitWorkFragments;
+package cat.itb.pixiv.Fragments.SubmitWorkFragments;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
@@ -18,9 +16,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.io.File;
-
-import cat.itb.pixiv.ClassesModels.IllustrationClass;
 import cat.itb.pixiv.ClassesModels.NovelClass;
 import cat.itb.pixiv.FireBase.FireBaseHelper;
 import cat.itb.pixiv.Fragments.HomeFragments.HomeFragment;
