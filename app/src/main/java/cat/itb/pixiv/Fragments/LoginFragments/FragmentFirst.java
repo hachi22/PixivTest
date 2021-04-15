@@ -53,6 +53,7 @@ public class FragmentFirst extends Fragment {
         });
 
         fireBaseHelper.setFirstsReferneces();
+
         return v;
     }
 }

@@ -54,7 +54,6 @@ public static FragmentHomeIllustrations getInstance(){
         View rootView = inflater.inflate(R.layout.fragment_home_illustrations, container, false);
         FireBaseHelper.setAllReferences();
 
-
         recyclerView = rootView.findViewById(R.id.recycler_view_illustrations_ranking);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

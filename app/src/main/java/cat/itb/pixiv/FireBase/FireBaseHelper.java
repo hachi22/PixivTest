@@ -1,17 +1,24 @@
 package cat.itb.pixiv.FireBase;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,7 +41,9 @@ import cat.itb.pixiv.ClassesModels.NovelClass;
 import cat.itb.pixiv.ClassesModels.User;
 import id.zelory.compressor.Compressor;
 
+import static android.content.ContentValues.TAG;
 import static androidx.core.app.ActivityCompat.startActivityForResult;
+import static cat.itb.pixiv.FireBase.FireBaseHelper.pujarImatge;
 
 public class FireBaseHelper {
 
@@ -66,7 +75,7 @@ public class FireBaseHelper {
     private static StorageReference storageImageReference;
 
 
-
+    private static User thisUser;
 
     private static DatabaseReference userMyWorksIllustrations;
     private static DatabaseReference userMyWorksManga;
@@ -81,6 +90,9 @@ public class FireBaseHelper {
     private static DatabaseReference userCollectionsNovels;
 
     private static DatabaseReference userMyWorks;
+
+    private static DatabaseReference following;
+    private static DatabaseReference followers;
 
     public static void setFirstsReferneces(){
         database = FirebaseDatabase.getInstance();
@@ -120,7 +132,9 @@ public class FireBaseHelper {
 
         referenceImageUser = referenceUsers.child(keyU).child("ImageProfile");
 
-        referenceUsers.child(keyU).child("Follows");
+        following = referenceUsers.child(keyU).child("Following");
+        followers = referenceUsers.child(keyU).child("Followers");
+
 
 
     }
@@ -141,8 +155,9 @@ public class FireBaseHelper {
                     User user = snapshot.getValue(User.class);
                     if(user!=null){
                         if(user.getUsername().equals(userName)){
-                            System.out.println(user.getUsername());
-                            System.out.println(userName);
+
+                            thisUser = user;
+
                             userExists[0] = true;
                             if(user.getPassword().equals(password)){
                                 keyU = user.getKey();
@@ -170,6 +185,7 @@ public class FireBaseHelper {
     public static void subirImagenPerfil(String url){
         DatabaseReference ref = referenceImageUser.child(keyU).getRef();
         ref.child("URL").setValue(url);
+        defaultUserImage = url;
     }
 
     //region SUBIR COLLECTIONS
@@ -214,16 +230,28 @@ public class FireBaseHelper {
         String keyI = ref.push().getKey();
         illus.setKey(keyI);
         ref.child(keyI).setValue(illus);
+
+        ref = referenceIllustrationsRecommended.getRef();
+        illus.setKey(keyI);
+        ref.child(keyI).setValue(illus);
     }
     public static void subirMyWork(MangaClass manga){
         DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child("Manga").getRef();
         String keyI = ref.push().getKey();
         manga.setKey(keyI);
         ref.child(keyI).setValue(manga);
+
+        ref = referenceMangaRecommended.getRef();
+        manga.setKey(keyI);
+        ref.child(keyI).setValue(manga);
     }
     public static void subirMyWork(NovelClass novel){
         DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child("Novels").getRef();
         String keyI = ref.push().getKey();
+        novel.setKey(keyI);
+        ref.child(keyI).setValue(novel);
+
+        ref = referenceMangaRecommended.getRef();
         novel.setKey(keyI);
         ref.child(keyI).setValue(novel);
     }
@@ -238,16 +266,46 @@ public class FireBaseHelper {
     public static void eliminarMyWork(IllustrationClass illus, String myWorkPackage){
         DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         ref.child(illus.getKey()).removeValue();
+
+        referenceIllustrationsRecommended.child(illus.getKey()).removeValue();
     }
     public static void eliminarMyWork(MangaClass manga, String myWorkPackage){
         DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         ref.child(manga.getKey()).removeValue();
+
+        referenceMangaRecommended.child(manga.getKey()).removeValue();
+
     }
     public static void eliminarMyWork(NovelClass novels, String myWorkPackage){
         DatabaseReference ref = referenceUsers.child(keyU).child("MyWork").child(myWorkPackage).getRef();
         ref.child(novels.getKey()).removeValue();
+
+        referenceNovelsRecommended.child(novels.getKey()).removeValue();
+
     }
 //endregion
+
+    public static void subirUserFollow(User user){
+        //poner que sigues a esa persona
+        DatabaseReference ref = following.getRef();
+        ref.child(user.getKey()).setValue(user);
+        //
+        //poner a la persona que le sigue alguien
+         ref = followers.getRef();
+         ref.child(thisUser.getKey()).setValue(thisUser);
+         //
+    }
+
+    public static void eliminarUserFollow(User user){
+        following.child(user.getKey()).removeValue();
+
+        DatabaseReference ref = followers.getRef();
+        ref.child(thisUser.getKey()).removeValue();
+
+    }
+
+
+
 
     public static String buscarImagenPerfil(){
         final String[] urlIU = new String[1];
@@ -268,11 +326,38 @@ public class FireBaseHelper {
         return urlIU[0];
     }
 
+    public static String[] buscar3Imagenes(){
+        final String[] tresImagenes = new String[3];
+        userMyWorksIllustrations.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(final DataSnapshot snapshot : dataSnapshot.getChildren()){
+
+                    IllustrationClass image = snapshot.getValue(IllustrationClass.class);
+                    assert image != null;
+                    for(int i = 0;i<tresImagenes.length;i++){
+                        if(tresImagenes[i]==null){
+                            tresImagenes[i] = image.getIllustrationImgUrl();
+                        }
+                    }
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+        return tresImagenes;
+    }
+
     //region MANEJO_DE_IMAGEN
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void comprimirImatge(Context context, File url, DatabaseReference imageReference){
+    public static void comprimirImatge(Context context, File url){
+        System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222");
+        DatabaseReference imageReference=null;
         byte [] thumb_byte;
         Bitmap thumb_bitmap = null;
+
+
         try {
             thumb_bitmap = new Compressor(context)
                     .setMaxHeight(125)
@@ -282,15 +367,34 @@ public class FireBaseHelper {
         }catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         thumb_bitmap.compress(Bitmap.CompressFormat.JPEG, 90,byteArrayOutputStream);
         thumb_byte = byteArrayOutputStream.toByteArray();
-        pujarImatge(thumb_byte, imageReference);
+        System.out.println("000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+        pujarImatge(thumb_byte, imageReference, context);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void pujarImatge(byte[] thumb_byte, DatabaseReference imageReference){
+    public static void pujarImatge(byte[] thumb_byte, DatabaseReference imageReference, Context context){
         final String[] nombreImagen = {""};
+
+
+//        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+//
+//        mAuth.signInAnonymously().addOnSuccessListener((Activity) context, new  OnSuccessListener<AuthResult>() {
+//            @Override
+//            public void onSuccess(AuthResult authResult) {
+//                // do your stuff
+//            }
+//        })
+//                .addOnFailureListener((Activity) context, new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception exception) {
+//                        Log.e(TAG, "signInAnonymously:FAILURE", exception);
+//                    }
+//                });
 
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
@@ -302,7 +406,9 @@ public class FireBaseHelper {
 //                .setCustomMetadata("longitude", String.valueOf(datosRecuperados.getDouble("longitude", 0.0)))
 //                .setCustomMetadata("latitude", String.valueOf(datosRecuperados.getDouble("latitude", 0.0)))
                 .build();
+        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
         UploadTask uploadTask =  ref.putBytes(thumb_byte, metadata);
+        System.out.println("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
         Task<Uri> uriTask = uploadTask.continueWithTask(task -> {
             if(!task.isSuccessful()){
                 throw Objects.requireNonNull(task.getException());
@@ -310,8 +416,8 @@ public class FireBaseHelper {
             return ref.getDownloadUrl();
         }).addOnCompleteListener(task -> {
             Uri downloadUri = task.getResult();
-            imageReference.push().child("urlfoto").setValue(downloadUri.toString());
-            System.out.println("Todo OK pujada feta");
+//            imageReference.push().child("urlfoto").setValue(downloadUri.toString());
+//            System.out.println("Todo OK pujada feta");
             urlImage =  downloadUri.toString();
         });
 
@@ -411,6 +517,10 @@ public class FireBaseHelper {
 
     public static DatabaseReference getUserCollectionsNovels() {
         return userCollectionsNovels;
+    }
+
+    public static User getThisUser() {
+        return thisUser;
     }
 }
 

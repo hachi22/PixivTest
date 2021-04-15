@@ -47,4 +47,14 @@ public class User {
     public void setImatgePerfil(String imatgePerfil) {
         this.imatgePerfil = imatgePerfil;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", key='" + key + '\'' +
+                ", imatgePerfil='" + imatgePerfil + '\'' +
+                '}';
+    }
 }
