@@ -63,7 +63,8 @@ public class FragmentSubmitManga extends Fragment {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.radio_button_public_novels){
+
+                if(checkedId == R.id.radio_button_public_illustrations){
 
                    pubpriv = 0;
                 }else{
